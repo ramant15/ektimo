@@ -1,0 +1,407 @@
+<!doctype html>
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+
+	<title>Quick start</title>
+
+	<meta name="description" content="">
+	<meta name="author" content="P.L. Wolbers">
+	<meta name="copyright" content="P.L. Wolbers">
+	<meta name="generator" content="Documenter v2.0 http://rxa.li/documenter">
+	<meta name="date" content="2014-08-08T19:16:19+02:00">
+
+	<link rel="stylesheet" href="assets/css/documenter_style.css" media="all">
+	<link rel="stylesheet" href="assets/js/google-code-prettify/prettify.css" media="screen">
+	<script src="assets/js/google-code-prettify/prettify.js"></script>
+
+
+
+	<script src="assets/js/jquery.js"></script>
+
+	<script src="assets/js/jquery.scrollTo.js"></script>
+	<script src="assets/js/jquery.easing.js"></script>
+
+	<script>document.createElement('section');var duration='500',easing='swing';</script>
+	<script src="assets/js/script.js"></script>
+
+	<style>
+		html{background-color:#FFFFFF;color:#383838;}
+		::-moz-selection{background:#444444;color:#DDDDDD;}
+		::selection{background:#444444;color:#DDDDDD;}
+		#documenter_sidebar #documenter_logo{background-image:url();}
+		a{color:#0000FF;}
+		.btn {
+			border-radius:3px;
+		}
+		.btn-primary {
+			  background-image: -moz-linear-gradient(top, #0088CC, #0044CC);
+			  background-image: -ms-linear-gradient(top, #0088CC, #0044CC);
+			  background-image: -webkit-gradient(linear, 0 0, 0 0088CC%, from(#DDDDDD), to(#0044CC));
+			  background-image: -webkit-linear-gradient(top, #0088CC, #0044CC);
+			  background-image: -o-linear-gradient(top, #0088CC, #0044CC);
+			  background-image: linear-gradient(top, #0088CC, #0044CC);
+			  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088CC', endColorstr='#0044CC', GradientType=0);
+			  border-color: #0044CC #0044CC #bfbfbf;
+			  color:#FFFFFF;
+		}
+		.btn-primary:hover,
+		.btn-primary:active,
+		.btn-primary.active,
+		.btn-primary.disabled,
+		.btn-primary[disabled] {
+		  border-color: #0088CC #0088CC #bfbfbf;
+		  background-color: #0044CC;
+		}
+		hr{border-top:1px solid #EBEBEB;border-bottom:1px solid #FFFFFF;}
+		#documenter_sidebar, #documenter_sidebar ul a{background-color:#DDDDDD;color:#222222;}
+		#documenter_sidebar ul a{-webkit-text-shadow:1px 1px 0px #EEEEEE;-moz-text-shadow:1px 1px 0px #EEEEEE;text-shadow:1px 1px 0px #EEEEEE;}
+		#documenter_sidebar ul{border-top:1px solid #AAAAAA;}
+		#documenter_sidebar ul a{border-top:1px solid #EEEEEE;border-bottom:1px solid #AAAAAA;color:#444444;}
+		#documenter_sidebar ul a:hover{background:#444444;color:#DDDDDD;border-top:1px solid #444444;}
+		#documenter_sidebar ul a.current{background:#444444;color:#DDDDDD;border-top:1px solid #444444;}
+		#documenter_copyright{display:block !important;visibility:visible !important;}
+	</style>
+
+</head>
+<body class="documenter-project-quick-start">
+	<div id="documenter_sidebar">
+		<a href="#documenter_cover" id="documenter_logo"></a>
+		<ul id="documenter_nav">
+			<li><a class="current" href="#documenter_cover">Start</a></li>
+
+			<li><a href="#installation" title="Installation">Installation</a></li>
+			<li><a href="#configuration_options" title="Configuration options">Configuration options</a></li>
+
+		</ul>
+		<div id="documenter_copyright">Copyright P.L. Wolbers 2014<br>
+		made with the <a href="http://rxa.li/documenter">Documenter v2.0</a>
+		</div>
+	</div>
+	<div id="documenter_content">
+	<section id="documenter_cover">
+	<h1>Quick start</h1>
+
+	<div id="documenter_buttons">
+
+	</div>
+	<hr>
+	<ul>
+	<li>created: 08/08/2014</li>
+
+	<li>by: P.L. Wolbers</li>
+
+
+	</ul>
+	<p></p>
+	</section>
+
+	<section id="installation">
+	<div class="page-header"><h3>Installation</h3><hr class="notop"></div>
+1. Extract the zipfile and put the extracted folder "employee-work-schedule" in your local or online webfolder. For most Windows users the local webfolder is the `htdocs` folder, that is the default when you install XAMPP. For Linux users the webfolder is probably `/var/www` or `/home/www`, you can find the correct folder in `/etc/httpd/conf/httpd.conf` or `/etc/apache2/sites-available/default` when you installed LAMPP.
+<br /><br />2. Create a database. Import the tables from the file ‘calendar_db_for_new_users.sql’ to your new database.
+<br /><br />3. Put the name, user and password of your database in configs/db.config.php.
+<br /><br />4. Open configs/config.php and set the correct paths.
+<br />- define('FULLCAL_DIR','/path-to-webserver/employee-work-schedule');
+<br />- define('FULLCAL_URL','/path-to-your-website/employee-work-schedule');
+<br /><br />5. Make the folder ‘templates_c’ writable (775 or 773).
+<br /><br />6. Make the folder ‘/system/dbdump’ writable (773, so that the folder is not viewable in the browser).
+<br /><br />7. Last thing is to decide how users (or just you) can access the calendar. There are 3 choices.
+<br /><br />You can set your choice in configs/config.php by changing the constant ALLOW_ACCESS_BY.
+<br />- free: everyone has access when they visit the calendar URL. To let an admin login set ADMIN_CAN_LOGIN_FROM_ADMIN_URL to true
+<br />- ip: the calendar can only be accessed from the given IP.
+<br />You have to put your IP behind CAL_IP
+<br />- login: users have to login so they can be verified.
+<br />1. If non-users should be able to view the calendar you have to set SHOW_SMALL_LOGIN_LINK to true, otherwise they will only see the loginpage.
+<br />Also look at the constants regarding your chosen access type that are important to set as well in config.php.
+<br />For testing or when you will be the only user, and you want the login access option, you can create a user by doing the steps in the chapter ‘How to create a user’.
+<br />If there will be more users and you don’t want them to be able to register themselves you can also use this way to add users.
+<br />If you plan to be the only user and you don’t want to login, you don’t have to create a user.
+<br />You could set IP_AND_FREE_ACCESS_SAVED_USER_ID to 1, so that when you create one user later, the calendar items will still be linked to you.
+<br /><br />8. In the sql files I added 2 insert queries for adding an admin and a superadmin. The superadmin is optional, but handy when you want to have more than one admin, because the superadmin can add admins.
+<br />When you log in as admin or superadmin you can change the default username and password. (admin-admin and superadmin-superadmin)
+<br /><p style="margin-left: 35.4pt;">
+	&nbsp;</p>
+<hr>
+<p>
+	&nbsp;</p>
+<strong>How to create a user:</strong><br />
+1.	ADMIN:  Through the browsers address bar. <br />
+You have to be logged in as admin.<br />
+Put your credentials in the browsers address bar, like this:<br />
+pathto_calendar/?action=admin_register&username=your_username&password= your_password&lastname=your_name<br /><br />
+
+2.	ADMIN:  Through the ‘Add user’ button in the users area in the admin area.. <br />
+You have to be logged in as admin.<br />
+The user will automatically be placed in the current admin_group.<br /><br />
+
+3.	USERS:  Through the register form. <br />
+Set ALLOW_ACCESS_BY to ‘login’ and   USERS_CAN_REGISTER to true. <br />
+Users can then register. <br />
+-	When you set SEND_ACTIVATION_MAIL to true the user receives an activation mail with a link to set a password. After that the user is registered and activated.<br />
+-	When SEND_ACTIVATION_MAIL is set to false, then there is a password field in the register form. After submit the user is registered and activated and can login immediately.<br /><br />
+
+
+<strong>How to create an admin:</strong><br />
+1.	With the query in the calendar_update_1.sql file you can add an admin. <br />
+(username=admin, password=admin)<br />
+An admin can add users.<br /><br />
+
+2.	Through the browsers address bar. See above. <br />
+You have to be logged in as superadmin.<br /><br />
+
+3.	Through the ‘Add admin’ button above the calendar. <br />
+You have to be logged in as superadmin.<br />
+Only a superadmin can add admins.<br /><br />
+
+4.	Advanced: Change a current user or admin to admin by setting the `usertype` to ‘admin’ and `admin_group` to NULL in the user table.<br /><br />
+
+
+<strong>How to create a superadmin:</strong><br />
+1.	With the query in the calendar_update_1.sql file you can add a superadmin. <br />
+(defaults: username=superadmin, password=superadmin)<br />
+A superadmin can add admins.<br /><br />
+
+2.	Advanced: Change a current user or admin to superadmin by setting the `usertype` to ‘superadmin’ and `admin_group` to NULL in the user table.<br /><br />
+
+<p>
+	&nbsp;</p>
+<p>
+</section>
+<section id="configuration_options" >
+<div class="page-header"><h3>Configuration options in /configs/config.php</h3><hr class="notop"></div>
+
+define('LANGUAGE', 'EN');<br />
+// NL, EN, FR, DE, ES, PL, NO, IT<br />
+// if admin has set a language in the settings form, this setting will be used when ALLOW_ACCESS_BY is free.<br /><br />
+
+global $current_languages;<br />
+$current_languages = array( 'EN' => 'English',<br />
+                                'NL' => 'Dutch',<br />
+                                'DE' => 'German',<br />
+                                'FR' => 'French',<br />
+                                'PL' => 'Polish',<br />
+                                'ES' => 'Spanish',<br />
+                                'NO' => 'Norwegian',<br />
+                                'IT' => 'Italian');    // used to set the languages in the dropdownlists<br /><br />
+                                
+define('ALLOW_ACCESS_BY', 'login');  	<br />
+// ip, free or login. If `ip` then users get user_id 1000000.<br /><br />
+
+define('ADMIN_USER_ID', 1);	<br />
+// only used when you didn't do the insert queries from the sql file. You can put the ID of one or more users here. When you did do the query, the admin_user_id is taken from the row where user_type is ‘admin’. More than 1 ID is also possible. Example: 1,2<br /><br />
+
+
+define('ADMIN_HAS_FULL_CONTROL', false);	<br />
+// when true the calendar options are ignored<br /><br />
+
+
+/**<br />
+ * ACCESS TYPE ‘IP’ OPTIONS<br />
+ */<br /><br />
+
+define('CAL_IP', '111.222.333.444');	<br />
+// ip of the calendar user. CAL_IP IS NEEDED WHEN ALLOW_ACCESS_BY IS `IP` !<br /><br />
+
+
+/**<br />
+ * ACCESS TYPE ‘IP’ AND ‘FREE’ OPTIONS<br />
+ */<br /><br />
+
+define('IP_AND_FREE_ACCESS_SAVED_USER_ID', 1000000);	<br />
+// 1000000 or another user_id<br /><br />
+
+
+/**<br />
+ * ACCESS TYPE ‘FREE’ OPTIONS<br />
+ */<br /><br />
+
+define('ADMIN_CAN_LOGIN_FROM_ADMIN_URL', false);	<br />
+// true: the admin can login from ../admin url. When set to true, ALLOW_ACCESS_BY must be ‘free’, Otherwise it doesn’t work.<br /><br />
+
+define('SHOW_SMALL_LOGIN_LINK', true);		<br />
+// true: a login link is visible above the calendar.<br />
+// false: depends on ALLOW_ACCESS_BY what happens: When ALLOW_ACCESS_BY is ‘free’ then visitors will see the calendar, when ALLOW_ACCESS_BY is ‘login’ visitors will be redirected to the login page. <br /><br />
+
+
+
+/**<br />
+ * ACCESS TYPE ‘LOGIN’ OPTIONS<br />
+ */<br /><br />
+
+define('USERS_CAN_REGISTER', true);<br />
+// A new user can register by clicking on the register button in the login screen.<br /><br />
+
+define('SEND_ACTIVATION_MAIL', true);	<br />
+// true, an email is send to the new user with an activation link. The user is activated after click on activation link and filling in a password on the webpage the link goes to.<br />
+// false, the user is immediately activated, password is in register form, when SHOW_CREATED_PASSWORD_WHEN_ADMIN_ADDS_USER is set to true. (or in the email when admin registers a user with add_user form)<br /><br />
+
+define('ACTIVATION_MAIL_SUBJECT', 'Welcome %USERNAME%');<br />
+// The subject of the activation mail.<br />
+// %USERNAME% will be replaced by the actual username of the user.<br /><br />
+
+define('RESET_PASSWORD_MAIL_SUBJECT', 'Reset your password');<br />
+// The subject of the reset_password mail<br /><br />
+
+
+/**<br />
+ * MAIL<br />
+ */<br /><br />
+
+define('FROM_EMAILADDRESS', 'your_emailaddress');<br />
+// used as ‘from’ address when mails are send to users.<br /><br />
+
+define('ADMIN_EMAILADDRESS', '');	<br />
+// used mail address to send the copy of the add_user mail.<br /><br />
+
+
+// OPTIONAL<br />
+define('TIMEZONE', '');     <br />
+// example: America/New_York, if left empty the clients timezone will be used.<br /><br />
+
+
+/**<br />
+ * CALENDAR OPTIONS<br />
+ */<br /><br />
+
+define('SHOW_WEEKNUMBERS', true);<br />
+// In the first column of the calendar the weeknumber is visible	<br /><br />
+
+define('SHOW_MONTH_VIEW_BUTTON', true);<br />
+// The `month` button will be visible<br /><br />
+
+define('SHOW_WEEK_VIEW_BUTTON', true);<br />
+// The `week` button will be visible<br /><br />
+
+define('SHOW_DAY_VIEW_BUTTON', true);<br />
+// The `day` button will be visible<br /><br />
+
+define('SHOW_AGENDA_VIEW_BUTTON', true);<br />
+// The `list` button will be visible<br /><br />
+
+define('WEEK_VIEW_TYPE', 'agendaWeek');	<br />
+// basicWeek or agendaWeek<br /><br />
+
+define('DAY_VIEW_TYPE', 'agendaDay');<br />
+// basicDay or agendaDay<br /><br />
+
+define('DEFAULT_VIEW', 'month');<br />
+// month, basicWeek, agendaWeek, basicDay, agendaDay, agendaList<br /><br />
+
+
+define('SHOW_TITLE_FIRST', false);	<br />
+// true: the title will be in front of the time. 	event1 10:00-11:00<br />
+// false: the time will be in front of the title. 	10:00-11:00 event1<br /><br />
+
+define('SORT_ALL_CALENDARS_BY_CALENDARID', true);	// if true, when clicked on 'Show all', the events are sorted by calendarID<br /><br />
+
+define('SHOW_NOTALLOWED_MESSAGES', false);	<br />
+// if true, a message will be shown when someone tries to add or edit an event, but has no rights to do so<br /><br />
+
+define('SHOW_SEARCH_BOX', true);<br />
+// if true, a search box is visible to search items in the calendar<br /><br />
+
+define('ONLY_SHOW_CALENDAR', false);		<br />
+// if true, calendar is visible and logout link when ALLOW_ACCESS_BY is login<br /><br />
+
+
+
+
+/**<br />
+ * EDIT DIALOG<br />
+ */<br /><br />
+
+
+define('SHOW_DESCRIPTION_FIELD', true);<br />
+// if true the user can give a description to an item<br /><br />
+
+define('SHOW_LOCATION_FIELD', false);<br />
+// if true the user can give a location to an item<br /><br />
+
+define('SHOW_PHONE_FIELD', false);<br />
+// if true the user can give a phone number to an item<br /><br />
+
+define('EDITDIALOG_COLORPICKER_TYPE', 'spectrum');	<br />
+// spectrum or simple<br /><br />
+
+define('DATEPICKER_DATEFORMAT', 'mm/dd/yy');	<br />
+// dd/mm/yy or 'mm/dd/yy'<br /><br />
+
+
+define('DIALOGS_RESIZABLE', true);<br /><br />
+
+
+define('DEFAULT_TIME_FOR_EVENT', '09:00');	<br />
+// leave empty (‘’) if you want the current time to be set when adding an event and allday checkbox is unchecked<br /><br />
+
+
+// TIMEPICKER<br />
+define('MINHOUR', 5);	<br />
+// the earliest hour that will be showed in the timepicker<br /><br />
+
+define('MAXHOUR', 23);	<br />
+// the latest hour that will be showed in the timepicker<br /><br />
+
+define('MINUTE_INTERVAL', 5);<br />
+// the interval, the precision by minutes the user can use when creating a calendar item. For example 5 minutes, 10 minutes or 15 minutes <br /><br />
+
+define('SIMPLE_TIME_SELECT', false);	<br />
+// if true then a simple smarty time_select combo is used<br />
+// if false a jQuery timepicker will be used<br /><br />
+
+
+
+/**<br />
+ * ADD USER FORM and profile form<br />
+ */<br /><br />
+define('SHOW_USERNAME_IN_FORM', true);<br />
+define('SHOW_INFIX_IN_FORM', false);<br />
+define('SHOW_CHECKBOX_COPY_TO_ADMIN', true);<br /><br />
+
+
+/**<br />
+ * ADD USER THROUGH BROWSER URL<br />
+ */<br /><br />
+define('SHOW_CREATED_PASSWORD_WHEN_ADMIN_REGISTER_VIA_BROWSER_URL', false);<br />
+// password will be shown so the admin knows it<br /><br />
+
+
+/**<br />
+ * ADD USER THROUGH ADD USER DIALOG (ONLY ADMIN CAN DO THIS)<br />
+ */<br /><br />
+define('SHOW_CREATED_PASSWORD_WHEN_ADMIN_ADDS_USER', false);	<br />
+// password will be shown so the admin knows it<br /><br />
+
+
+/**<br />
+ * CALENDAR ITEMS<br />
+ */<br /><br />
+
+define('DEFAULT_COLOR', '#3366cc');<br /><br />
+
+define('SHOW_MOUSEOVER_DELETE_BUTTON', false);	<br />
+// show an icon on mouseover for quick deleting an event<br /><br />
+
+define('TRUNCATE_TITLE', true);<br />
+//  show part of the title in the calendar<br /><br />
+
+define('TRUNCATE_LENGTH', 20);<br />
+// the color of added events<br /><br />
+
+
+
+define('SCHEDULE_SQLDUMP', 86400);	<br />
+// a backup of the database is automatically made (this code does the magic: Schedule::run();)<br />
+// for example: 3600 = 1 hour, 86400 = 1 day, 604800 = 1 week<br /><br />
+
+
+
+</section>
+
+
+</body>
+</html>

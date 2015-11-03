@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => array('address' => 'EMAIL@HERE.com', 'name' => null),
+    'from' => array('address' => 'gurpreet@nascenture.com', 'name' => null),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'username' => 'EMAIL@HERE.com',
+    'username' => 'gurpreet@nascenture.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'password' => 'SD9F87ASDF987FD9SA7DF',
+    'password' => '7KdTZnrPxKQJof22WrgpIw',
 
     /*
     |--------------------------------------------------------------------------

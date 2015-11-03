@@ -40,6 +40,11 @@ Route::post('customers/siteUpdate', 'CustomersController@siteUpdate');
 Route::get('customers/locationEdit', 'CustomersController@locationEdit');
 Route::post('customers/locationUpdate', 'CustomersController@locationUpdate');
 Route::resource('customers','CustomersController');
+
+Route::get('technician/jobs', 'TechnicianController@jobs');
+Route::get('technician/download_files', 'TechnicianController@download_files');
+Route::get('technician/job_detail/{id}', 'TechnicianController@job_detail');
+
 Route::get('/work-schedule', function () {
 	include (public_path().'/work-schedule/index.php');
 });

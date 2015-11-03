@@ -49,6 +49,10 @@ class ProcessItemsController extends Controller {
 	function store(Request $request){
 		 
 		$input = $request->all();
+		$image = $request->file('item_image');
+		$imageName = $image->getClientOriginalName();
+		$image->move(public_path() . '/ItemImages/', $imageName);
+		$input['image'] = $imageName;
 		$processItem = new ProcessItem;
 		$processItem::create($input); 
 		return redirect('admin/process-items'); 

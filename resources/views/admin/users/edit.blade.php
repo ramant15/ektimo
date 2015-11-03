@@ -20,8 +20,7 @@
 			@endif
 				
 			<form class="form-horizontal" role="form" method="POST" action="{{URL::to('admin/users')}}/{{$user->id}}">
-			 
-					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<input type="hidden" name="_method" value="PUT">
 					<div class="form-group">
 						<label class="col-md-4 control-label">Name</label>
@@ -50,7 +49,25 @@
 							<input type="password" class="form-control" name="password_confirmation">
 						</div>
 					</div>
-
+						<div class="form-group">
+						<label class="col-md-4 control-label">Type</label>
+						<div class="col-md-6">
+							<select class="form-control" name="type">
+							<option>--Select type--</option>
+							<option value="manager" {{$user->type == 'manager'?'selected':''}} > Client manager</option>
+							<option value="technician" {{$user->type == 'technician'?'selected':''}} >Technician</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+					<label class="col-md-4 control-label">Status</label>
+						<div class="col-md-6">
+							<select class="form-control" name="status">
+							<option value="1">Active</option>
+							<option value="0">Inactive</option>
+							</select>
+						</div>
+					</div>
 					<div class="form-group">
 						<div class="col-md-6 col-md-offset-4">
 							<button type="submit" class="btn btn-primary">

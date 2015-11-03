@@ -4,11 +4,14 @@ use DB;
 use Validator;
 use App\Order;
 use App\User;
+use App\Role;
 use App\OrderDetail;
 use App\TestProcess;
+use Redirect;
 use App\TechnicianSchedule;
+use Excel;
 use Session;
- 
+use Mail;
 
 class HomeController extends Controller {
 
@@ -31,7 +34,14 @@ class HomeController extends Controller {
 	public function __construct()
 	{
 		$this->middleware('auth');
+		$user  = \Auth::user();
+		if (!$user->hasRole('client manager') && $user->hasRole('field technician')){
+			Redirect::to('technician/jobs')->send();
+		}
+		
+		
 	}
+	
 
 	/**
 	 * Show the application dashboard to the user.
@@ -41,6 +51,7 @@ class HomeController extends Controller {
 	public function index()
 	{	
 		$id  = \Auth::user()->id;
+		$user  = \Auth::user();
 		$orders = Order::with(array('customer','site'))->where('user_id','=',$id)->orderBy('id','DESC')->get();
 		
 		foreach($orders as $progress){
@@ -59,56 +70,71 @@ class HomeController extends Controller {
 		$input = $request->all(); 
 		
 		if($input){
-			/*$schedule = explode(' -',$input['schedule']);
-			$start_date = trim($schedule[0]);
-			$end_date = trim($schedule[1]);
-		
-			$messages = [
-				'technician_id.required' => 'Please select the technician.',
-			];
-				
-			$validator = Validator::make($request->all(), [
-				'technician_id' => 'required'
-			],$messages);
+			$events = DB::table('work_schedule.events')->join('work_schedule.calendars', 'work_schedule.events.calendar_id', '=', 'work_schedule.calendars.calendar_id')->where('work_schedule.events.order_id','=',$input['id'])->select('work_schedule.calendars.name')->get();
 	
-			if ($validator->fails()) {
-				return redirect()->back()->withErrors($validator)->withInput();
-			}
-			
-			if(isset($input['edit']) && $input['edit'] == 'true'){
-				$schedule  = TechnicianSchedule::find($input['schedule_id']);
-				$schedule->update(array(
-					'technician_id'=> $input['technician_id'],
-					'start_date'   => $start_date,
-					'end_date'     => $end_date,
-					'comment'      => $input['comment']
-				));
-				
-				Session::flash('flash_message', 'Order has been updated successfully.');
-				
-			}else{
-				$data = array(
-					'order_id'     => $input['id'],
-					'technician_id'=> $input['technician_id'],
-					'start_date'   => $start_date,
-					'end_date'     => $end_date,
-					'comment'      => $input['comment']
-				);
-					
-				$tech_schedule = new TechnicianSchedule;		
-				$tech_schedule->create($data);
-				
-				Session::flash('flash_message', 'Order has been approved successfully.');
-			}
-		*/
-		$event = DB::table('work_schedule.events')->where('order_id','=',$input['id'])->get();
-		if(empty($event)){
+		if(empty($events)){
 			Session::flash('flash_message', 'Please assign and schedule technician first.');
 			Session::flash('flash_type', 'alert-danger');
 			return redirect('home/order-reveiw/'.$input['id']); 
+		}else{
+			//get email of technician 
+			foreach($events as $event){
+				$technician_email = DB::table('users')->where('name','=',$event->name)->select('email')->first();
+				$email = $technician_email->email;
+				Mail::send('emails.tech_notification', array('key' => 'value'), function($message)
+				{
+					$message->to($email, 'welcome')->subject('Ektimo jobs to do');
+				});
+			}
 		}
-			// update order status //
-			$order  = Order::find($input['id']);
+		
+		
+		// update order status //
+		$order = Order::with(array('details'))->find($input['id']);
+		
+		$data  = array();
+		foreach($order['details'] as $value){
+			
+		$test_processes = DB::table('test_processes')->join('process_items', 'test_processes.item_id', '=', 'process_items.id')->select('process_items.name','process_items.image')->where('test_id','=',$value->test_id)->get();
+		
+		$order_id = $value->order_id;
+		$data[] = array(
+			'parameter'   => $value['parameter'],
+			'state' 	  => $value['state'],
+			'method_type' => $value['method'],
+			'method'  	  => $value['test_method'],
+			'sampling'   => '',
+			'Analysis'  => '',
+			'quantity'  =>  $value['quantity']
+		);
+		
+			foreach($test_processes as $item){
+				$data[0][$item->name] = $item->name.$item->image;
+			}
+		}
+	
+		Excel::create('job_pack', function($excel) use($data,$order_id){
+			$excel->sheet('Sheet1', function($sheet) use($data,$order_id) {
+				$head = array(
+					'Parameter',
+					'State',
+					'Method type',
+					'Test Method',
+					'Sampling',
+					'Analysis',
+					'quantity'
+				);
+			
+			$sheet->fromArray($head, null, 'A1', false, false);
+			$r = 2;
+			
+			foreach($data as $val){
+				$sheet->row($r,$val);
+				$r++;
+			}
+			});
+		})->store('xls', storage_path('excel/'.$order_id));
+		
 			
 			if($order){
 				$order->update(array(

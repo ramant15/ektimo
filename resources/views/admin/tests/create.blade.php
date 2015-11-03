@@ -11,7 +11,7 @@
 				<h4>Add Test</h4>
 			</div>
 			<div class="panel-body">
-			<form class="form-horizontal" role="form" method="post" action="{{URL::to('admin/tests')}}" id="testForm">
+			<form class="form-horizontal" role="form" method="post" action="{{URL::to('admin/tests')}}" enctype="multipart/form-data" id="testForm">
 					<input type="hidden" name="POST">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<fieldset class="scheduler-border">
@@ -52,7 +52,19 @@
 							@endforeach
 						</div>
 					</div>
-				
+					<div class="form-group">
+						<label class="col-md-4 control-label">Price</label>
+						<div class="col-md-6">
+							<input type="text" id="testPrice" class="form-control" name="price" value="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label">Upload Document</label>
+						<div class="col-md-6">
+							<input type="file" id="testFile" class="form-control" name="test_files[]" value="" multiple>
+						</div>
+					</div>
+
 					<div class="form-group">
 						<div class="col-md-6 col-md-offset-4">
 							<button type="submit" class="btn btn-primary">

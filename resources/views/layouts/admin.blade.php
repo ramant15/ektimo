@@ -65,7 +65,10 @@
                         </li>
                        <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i>Management<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">                                
+                            <ul class="nav nav-second-level">   
+								<li>
+                                    <a href="<?php echo url(); ?>/admin/users">Add User</a>
+                                </li>							
 								<li>
                                     <a href="<?php echo url(); ?>/admin/processes">Test Processes</a>
                                 </li>

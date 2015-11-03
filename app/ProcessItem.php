@@ -22,7 +22,7 @@ class ProcessItem extends Model implements AuthenticatableContract, CanResetPass
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['id','name','status'];
+	protected $fillable = ['id','name','image','status'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.

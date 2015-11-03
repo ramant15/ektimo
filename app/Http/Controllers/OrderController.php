@@ -44,7 +44,7 @@ class OrderController extends Controller {
 			$state_id = ""; 
 			$parameters = DB::table('parameters')->orderBy('parameters.name')->get();
 		}
-		$users      = DB::table('users')->where('role_id','=',3)->select('id','name','email')->get(); 
+		$users = DB::table('users')->where('role_id','=',3)->select('id','name','email')->get(); 
 		$customers  = Customer::all();   
 		$orders = Order::where('customer_id','=',14)->get(); 
 		 

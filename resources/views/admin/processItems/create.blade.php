@@ -19,13 +19,19 @@
 				</div>
 			@endif
 				
-			<form class="form-horizontal" role="form" method="POST" action="{{URL::to('admin/process-items')}}">
+			<form class="form-horizontal" role="form" method="POST" action="{{URL::to('admin/process-items')}}" enctype="multipart/form-data">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 					<div class="form-group">
 						<label class="col-md-4 control-label">Item name</label>
 						<div class="col-md-6">
 							<input type="text" name="name">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label">Item Image</label>
+						<div class="col-md-6">
+							<input type="file" id="itemImage" class="form-control" name="item_image" value="">
 						</div>
 					</div>
 					<div class="form-group">

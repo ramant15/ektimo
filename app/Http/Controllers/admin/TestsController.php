@@ -11,6 +11,7 @@ use App\Parameter;
 use App\State;
 use App\Method;
 use App\TestMethod;
+use App\TestFile;
 
 class TestsController extends Controller {
 
@@ -75,6 +76,7 @@ class TestsController extends Controller {
 	function store(Request $request){
 		$input = $request->all();
 		$testArr = array();
+		$files = $request->file('test_files');
 		
 		$getParam = Parameter::where('name','=',$input['parameter'])->first();
 		if(!empty($getParam)){
@@ -84,15 +86,19 @@ class TestsController extends Controller {
 			$parameter->create(array('name'=>$input['parameter']));
 			$testArr['parameter_id'] = DB::getPdo()->lastInsertId();
 		}
+		
 		$getState = Parameter::where('name','=',$input['state'])->first();
 		if(!empty($getState)){
-		$testArr['state_id'] = $getState->id;
-		}else{
+			$testArr['state_id'] = $getState->id;
+		}
+		else{
 			$state = new State;		
 			$state->create(array('name'=>$input['state']));
 			$testArr['state_id'] = DB::getPdo()->lastInsertId();
 		}
+		
 		$getMethod = Method::where('name','=',$input['method'])->first();
+		
 		if(!empty($getMethod)){
 		$testArr['method_id'] = $getMethod->id;
 		}else{
@@ -100,7 +106,9 @@ class TestsController extends Controller {
 			$method->create(array('name'=>$input['method']));
 			$testArr['method_id'] = DB::getPdo()->lastInsertId();
 		}
+		
 		$getTestMethod = TestMethod::where('name','=',$input['test_method'])->first();
+		
 		if(!empty($getTestMethod)){
 		$testArr['test_method_id'] = $getTestMethod->id;
 		}else{
@@ -110,11 +118,12 @@ class TestsController extends Controller {
 		}
 		
 		$checkTest = Test::where('parameter_id','=',$testArr['parameter_id'])->where('parameter_id','=',$testArr['state_id'])->where('parameter_id','=',$testArr['method_id'])->where('parameter_id','=',$testArr['test_method_id'])->first();
+		
 		if($checkTest){
 			$test_id = $checkTest->id;
 			Session::flash('flash_message', 'Test already exist.');
 		}else{
-			$testArr['price'] = 147;
+			$testArr['price'] = $input['price'];
 			$test = new Test;
 			$test::create($testArr);
 			$test_id = DB::getPdo()->lastInsertId();
@@ -122,6 +131,14 @@ class TestsController extends Controller {
 		}
 		
 		if($test_id){
+			if(!empty($files)){
+				foreach($files as $file){
+					$fileName = $file->getClientOriginalName();
+					$file->move(base_path() . '/public/TestFiles/'.$test_id, $fileName);
+					$file = new TestFile;
+					$file::create(array('file_name' => $fileName));					
+				}
+			}
 			DB::table('test_processes')->where('test_id','=',$test_id)->delete();
 			
 			if($request->has('test_item')) {

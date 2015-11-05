@@ -81,6 +81,9 @@
 								<li>
                                     <a href="<?php echo url(); ?>/admin/process-items">Add Process Items</a>
                                 </li>
+								<li>
+                                    <a href="<?php echo url(); ?>/admin/location-types">Add Location Types</a>
+                                </li>
                             </ul>
                         </li>
                             <!-- /.nav-second-level -->

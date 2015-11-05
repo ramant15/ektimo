@@ -73,10 +73,9 @@
 							<div class="col-md-5">
 								<select class="form-control" id="test" name="type">
 									<option value="">--- Select type ---</option>
-									<option value="abc">abc</option>
-									<option value="cdf">cdf</option>
-									<option value="efg">efg</option>
-									<option value="hij">hij</option>
+									@foreach($tests as $key => $value)
+									<option value="{{$value->id}}">{{ $value->parameter.', '.$value->state.', '.$value->method.', '.$value->test_method }}</option>
+									@endforeach
 								</select>
 							</div>
 						</div>

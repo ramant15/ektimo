@@ -70,6 +70,7 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin','middleware' => 'App\H
 	//Route::resource('processItems','ProcessItemsController');
 	Route::resource('process-items','ProcessItemsController');
 	Route::resource('tests','TestsController');
+	Route::resource('location-types','LocationTypeController');
 	
 	
 });

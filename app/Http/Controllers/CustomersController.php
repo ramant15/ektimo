@@ -6,6 +6,7 @@ use App\Customer;
 use App\Site;
 use App\State;
 use App\TestLocation;
+use App\LocationType;
 use Session;
  
 
@@ -135,6 +136,7 @@ class CustomersController extends Controller {
 	
 	public function testLocation()
 	{
+		$locations_type = LocationType::get();
 		$tests = DB::table('tests')
 				->join('parameters', 'tests.parameter_id', '=', 'parameters.id')
 				->join('states', 'tests.state_id', '=', 'states.id')
@@ -142,7 +144,7 @@ class CustomersController extends Controller {
 				->join('test_methods', 'tests.test_method_id', '=', 'test_methods.id')
 				->select('tests.id','tests.price','parameters.name as parameter','states.name as state','methods.name as method','states.name as state','test_methods.name as test_method')->orderBy('parameters.name')->get();
 	
-		return view('customers.testLocation')->with('tests',$tests);
+		return view('customers.testLocation')->with(compact('tests','locations_type'));
 	}
 	
 	public function addTestLocation(Request $request){

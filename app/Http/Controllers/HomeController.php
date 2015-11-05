@@ -83,7 +83,7 @@ class HomeController extends Controller {
 				$email = $technician_email->email;
 				Mail::send('emails.tech_notification', array('key' => 'value'), function($message)
 				{
-					$message->to($email, 'welcome')->subject('Ektimo jobs to do');
+					//$message->to($email, 'welcome')->subject('Ektimo jobs to do');
 				});
 			}
 		}
@@ -95,26 +95,37 @@ class HomeController extends Controller {
 		$data  = array();
 		foreach($order['details'] as $value){
 			
-		$test_processes = DB::table('test_processes')->join('process_items', 'test_processes.item_id', '=', 'process_items.id')->select('process_items.name','process_items.image')->where('test_id','=',$value->test_id)->get();
-		
-		$order_id = $value->order_id;
-		$data[] = array(
-			'parameter'   => $value['parameter'],
-			'state' 	  => $value['state'],
-			'method_type' => $value['method'],
-			'method'  	  => $value['test_method'],
-			'sampling'   => '',
-			'Analysis'  => '',
-			'quantity'  =>  $value['quantity']
-		);
+			$test_processes = DB::table('test_processes')->join('process_items', 'test_processes.item_id', '=', 'process_items.id')->select('process_items.name','process_items.image')->where('test_id','=',$value->test_id)->get();
+			
+			$order_id = $value->order_id;
+			$data[] = array(
+				'parameter'   	=> $value['parameter'],
+				'state' 	  	=> $value['state'],
+				'method_type'	=> $value['method'],
+				'method'  	  	=> $value['test_method'],
+				'sampling'   	=> '',
+				'Analysis'  	=> '',
+				'quantity'  	=>  $value['quantity']
+			);
 		
 			foreach($test_processes as $item){
-				$data[0][$item->name] = $item->name.$item->image;
+				$data[0][$item->name] = $item->name.'  '.$item->image;
+				
 			}
 		}
-	
-		Excel::create('job_pack', function($excel) use($data,$order_id){
+		
+		/// This is new code for excel image generate
+		Excel::create('job_pack', function($excel) use($data, $order, $test_processes){
+			
+			$excel->sheet('excel', function($sheet) use($data, $order, $test_processes){
+				$sheet->loadView('excel')->with('data', $data)->with('order', $order)->with('test_processes', $test_processes);
+			});	
+				
+		})->store('xls', storage_path('excel/'.$order_id));
+		
+		/*Excel::create('job_pack', function($excel) use($data,$order_id){
 			$excel->sheet('Sheet1', function($sheet) use($data,$order_id) {
+				
 				$head = array(
 					'Parameter',
 					'State',
@@ -122,7 +133,8 @@ class HomeController extends Controller {
 					'Test Method',
 					'Sampling',
 					'Analysis',
-					'quantity'
+					'quantity',
+					'Kit && Image'
 				);
 			
 			$sheet->fromArray($head, null, 'A1', false, false);
@@ -133,7 +145,7 @@ class HomeController extends Controller {
 				$r++;
 			}
 			});
-		})->store('xls', storage_path('excel/'.$order_id));
+		})->store('xls', storage_path('excel/'.$order_id));*/
 		
 			
 			if($order){

@@ -200,7 +200,8 @@ class CustomersController extends Controller {
 				->join('test_methods', 'tests.test_method_id', '=', 'test_methods.id')
 				->select('tests.id','tests.price','parameters.name as parameter','states.name as state','methods.name as method','states.name as state','test_methods.name as test_method')->orderBy('parameters.name')->get();
 		$location = TestLocation::find($id);
-		return view('customers.locationEdit')->with(compact('location','tests'));
+		$locations_type = LocationType::get();
+		return view('customers.locationEdit')->with(compact('location','tests', 'locations_type'));
 	}
 	
 	function locationUpdate(Request $request){

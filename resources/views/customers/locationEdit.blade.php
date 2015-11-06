@@ -74,10 +74,14 @@
 							<div class="col-md-5">
 								<select class="form-control" id="test" name="type">
 									<option value="">--- Select type ---</option>
-									<option value="abc" {{$location->duration = 'abc'?'selected':''}} >abc</option>
+								@foreach($locations_type as $val)
+									<option value="{{$val['id']}}" {{$location->duration = $val['id'] ? 'selected':''}}>{{$val['name']}}</option>
+								@endforeach
+									
+									<!--<option value="abc" {{$location->duration = 'abc'?'selected':''}} >abc</option>
 									<option value="cdf" {{$location->duration = 'cdf'?'selected':''}} >cdf</option>
 									<option value="efg" {{$location->duration = 'efg'?'selected':''}} >efg</option>
-									<option value="hij" {{$location->duration = 'hij'?'selected':''}} >hij</option>
+									<option value="hij" {{$location->duration = 'hij'?'selected':''}} >hij</option>-->
 								</select>
 							</div>
 						</div>

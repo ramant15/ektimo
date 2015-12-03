@@ -1,0 +1,178 @@
+
+
+CREATE TABLE IF NOT EXISTS `calendar_dditems` (
+  `dditem_id` int(11) NOT NULL AUTO_INCREMENT,
+  `calendar_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `info` varchar(255) NOT NULL,
+  `color` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`dditem_id`),
+  UNIQUE KEY `calendar_id` (`calendar_id`,`title`),
+  CONSTRAINT `calendar_dditems_ibfk_1` FOREIGN KEY (`calendar_id`) REFERENCES `calendars` (`calendar_id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `calendars` (
+  `calendar_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `share_type` enum('private','shared','public','public_open','private_group') NOT NULL,
+  `calendar_color` varchar(20) NOT NULL DEFAULT '#0000FF',
+  `login_required` tinyint(1) NOT NULL DEFAULT '0',
+  `cal_startdate` date DEFAULT NULL,
+  `cal_enddate` date DEFAULT NULL,
+  `alterable_startdate` date DEFAULT NULL,
+  `alterable_enddate` date DEFAULT NULL,
+  `creator_id` int(11) NOT NULL,
+  `can_view` tinyint(1) NOT NULL DEFAULT '0',
+  `can_add` tinyint(1) NOT NULL DEFAULT '0',
+  `can_edit` tinyint(1) NOT NULL DEFAULT '0',
+  `can_delete` tinyint(1) NOT NULL DEFAULT '0',
+  `can_change_color` tinyint(1) NOT NULL DEFAULT '0',
+  `can_dd_drag` varchar(55) DEFAULT NULL,
+  `initial_show` tinyint(1) NOT NULL DEFAULT '0',
+  `active` enum('yes','no','period') DEFAULT 'yes',
+  `deleted` tinyint(1) DEFAULT '0',
+  `calendar_admin_email` varchar(255) DEFAULT NULL,
+  `users_can_email_event` tinyint(1) NOT NULL DEFAULT '0',
+  `all_event_mods_to_admin` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`calendar_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+INSERT INTO `calendars` VALUES("1","deep technician","public","#FF5F3F","0","","","","","1","0","1","1","1","0","everyone","0","yes","0","","0","0");
+INSERT INTO `calendars` VALUES("2","raman tech","public","#FF5F3F","0","","","","","1","0","1","1","1","0","everyone","0","yes","0","","0","0");
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `event_files` (
+  `event_file_id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) NOT NULL,
+  `filename` varchar(55) NOT NULL,
+  `original_filename` varchar(255) NOT NULL,
+  `file_extension` varchar(5) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `upload_date` datetime NOT NULL,
+  `create_id` int(11) NOT NULL,
+  PRIMARY KEY (`event_file_id`),
+  UNIQUE KEY `filename` (`filename`,`event_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `events` (
+  `event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `description` text,
+  `phone` varchar(25) DEFAULT NULL,
+  `myurl` varchar(1024) DEFAULT NULL,
+  `date_start` date DEFAULT NULL,
+  `time_start` time DEFAULT NULL,
+  `date_end` date DEFAULT NULL,
+  `time_end` time DEFAULT NULL,
+  `allDay` tinyint(1) NOT NULL DEFAULT '0',
+  `calendartype` varchar(155) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `color` varchar(10) NOT NULL,
+  `assigned_by` int(11) DEFAULT NULL,
+  `repeating_event_id` int(11) DEFAULT NULL,
+  `create_date` datetime NOT NULL,
+  `calendar_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  PRIMARY KEY (`event_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+INSERT INTO `events` VALUES("1","ddddf","","dddfd","","","2015-10-06","15:00:00","2015-10-06","16:00:00","0","","0","#FF5F3F","","0","2015-10-21 18:38:29","1","5");
+INSERT INTO `events` VALUES("2","TEST-BMVModi","","TEST-BMVModi","","","2015-10-26","12:00:00","2015-10-26","12:45:00","0","","0","#FF5F3F","","0","2015-10-26 17:37:03","1","15");
+INSERT INTO `events` VALUES("3","Test Title","","This is a testing title description","","","2015-10-08","20:00:00","2015-10-08","20:00:00","0","","0","#FF5F3F","","0","2015-10-27 02:04:34","1","11");
+INSERT INTO `events` VALUES("4","dstreterterteertertret","","rtretretertretretretret","","","2015-09-30","11:00:00","2015-09-30","11:00:00","0","","0","#FF5F3F","","0","2015-10-28 17:50:49","2","17");
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `repeating_events` (
+  `rep_event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rep_interval` enum('D','W','2W','M','Y') NOT NULL,
+  `weekdays` varchar(255) NOT NULL,
+  `monthday` enum('dom','dow') NOT NULL,
+  `yearmonthday` int(2) DEFAULT NULL,
+  `yearmonth` int(2) DEFAULT NULL,
+  `startdate` date NOT NULL,
+  `enddate` date NOT NULL,
+  `bln_broken` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`rep_event_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `schedule` (
+  `job_id` int(11) NOT NULL AUTO_INCREMENT,
+  `jobname` varchar(255) NOT NULL,
+  `last_exec_date` datetime NOT NULL,
+  PRIMARY KEY (`job_id`),
+  UNIQUE KEY `jobname` (`jobname`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+INSERT INTO `schedule` VALUES("11","sqldump","2015-10-29 05:47:37");
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `settings` (
+  `name` varchar(55) NOT NULL,
+  `value` varchar(55) NOT NULL,
+  `section` varchar(55) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `update_date` datetime NOT NULL,
+  UNIQUE KEY `name` (`name`,`section`,`user_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `settings` VALUES("language","EN","","2","2014-12-28 20:11:22");
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(255) NOT NULL,
+  `infix` varchar(15) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `registration_date` datetime NOT NULL,
+  `birth_date` date NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `user_hash` varchar(255) NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `ip` varchar(55) DEFAULT NULL,
+  `country` varchar(55) DEFAULT NULL,
+  `country_code` varchar(2) DEFAULT NULL,
+  `usertype` enum('superadmin','admin','user') NOT NULL DEFAULT 'user',
+  `admin_group` int(11) DEFAULT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `user_info` text,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+INSERT INTO `users` VALUES("1","","","superadmin","superadmin@somemail","2014-08-02 10:09:39","0000-00-00","superadmin","d4558c97495b2c3954f73bae761c6d0f","","1","","","","superadmin","","0","");
+INSERT INTO `users` VALUES("2","","","admin","admin@somemail","2014-08-02 10:10:39","0000-00-00","admin","af41d89626f1dc9dfef36870cc9d24f6","","1","","","","admin","","0","");
+
+
+

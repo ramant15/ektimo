@@ -1,0 +1,74 @@
+<?php $__env->startSection('content'); ?>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+			 <strong> Update process </strong>
+			</div>
+			<div class="panel-body">
+			
+			<?php if(count($errors) > 0): ?>
+					<div class="alert alert-danger">
+						<strong>Whoops!</strong> There were some problems with your input.<br><br>
+						<ul>
+							<?php foreach($errors->all() as $error): ?>
+								<li><?php echo e($error); ?></li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
+			<?php endif; ?>
+				
+			<form class="form-horizontal" role="form" method="POST" action="<?php echo e(URL::to('admin/processes')); ?>/<?php echo e($process->id); ?>">
+					<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+					<input type="hidden" name="_method" value="PUT">
+					<div class="form-group">
+						<label class="col-md-4 control-label">Select process</label>
+						<div class="col-md-6">
+							<select class="form-control" name="test">
+							<?php foreach($tests as $key => $value): ?>
+							<?php
+							if($value->id == $process->test_id){
+								$selected  = "selected";
+							}else{
+								$selected = "";
+							}
+							?>
+							<option value="<?php echo e($value->id); ?>" <?php echo $selected; ?>><?php echo e($value->parameter.$value->state.$value->method.$value->test_method); ?></option>
+							<?php endforeach; ?>
+							</select>
+						</div>
+						</div>
+					<?php $item_ids = explode(',',$process->item_id); ?>
+					<div class="form-group">
+						<label class="col-md-4 control-label">Choose item</label>
+						<div class="col-md-6">
+							<?php foreach($items as $key => $value): ?>
+							<?php
+							if(in_array($value->id,$item_ids)){
+								$checked  = "checked";
+							}else{
+								$checked = "";
+							}
+							?>
+							<?php echo e($value->name); ?>
+
+							<input type="checkbox" name="test_item[<?php echo e($value->id); ?>]" <?php echo $checked; ?>>
+							<?php endforeach; ?>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-6 col-md-offset-4">
+							<button type="submit" class="btn btn-primary">
+								Update
+							</button>
+							<a href="<?php echo e(URL::to('admin/processes')); ?>" class="btn btn-primary">Cancel</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,145 @@
+<?php $__env->startSection('content'); ?>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h4 class="field">Field Technician</h4></div>
+				<div class="panel-body">
+				<form class="form-horizontal" role="form" method="post" action="<?php echo e(URL::to('technician/job_detail')); ?>/<?php echo e($job->order_id); ?>" enctype="multipart/form-data" id="testForm">
+					<input type="hidden" name="POST">
+					<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+					<div class="row">
+					<div class="col-md-4 div_main" style="margin-left: 3%;">
+					  <dl class="">
+					<dt>Job Title</dt>
+					<dd><?php echo e($job->title); ?></dd>
+					<dd>  <p> </p></dd>
+					<dt>Time</dt>
+					<dd>Start time: <?php echo e(date('d-m-Y',strtotime($job->date_start))); ?> <?php echo e($job->time_start); ?>
+
+						<?php /*<br>
+						End time: <?php echo e(date('d-m-Y',strtotime($job->date_end))); ?> <?php echo e($job->time_end); ?>*/ ?>
+					</dd>
+					<dd>  <p> </p></dd>
+					<dt>Job Documents</dt>
+					<dd>  <p> </p></dd>
+					<dd>  <p> </p></dd>
+					<?php if($job_file == 'exist'): ?>
+					<dd><a href="<?php echo e(URL::to('technician/download_files')); ?>?order=<?php echo e($job->order_id); ?>">Ektimo Flows Spreadsheet.xlsm</a></dd>
+					
+					<?php else: ?>
+						Job file not exist.
+					<?php endif; ?>
+					<dd>  <p> </p></dd>
+					
+					<dd>  <p> </p></dd>
+					<input type="file" id="testFile" name="test_files" value="">
+					<dd>  <p> </p></dd>
+					<span><strong>Upload Documents:</strong></span>
+					
+					<button class="btn btn-primary" type="submit">+ Upload</button>
+					</dd>
+					<dd>  <p> </p></dd>
+					<dd>  <p> </p></dd>
+					<dd>
+					<dd>  <p> </p></dd>
+					<dd>  <p> </p></dd>
+					<dd>  <p> </p></dd>
+					<ul class="" style="list-style-type:none;">
+					<?php if(!empty($documents)): ?>
+						<?php foreach($documents as $num => $file): ?>
+						<li style="color:#009933;">
+						Stack <?php echo e($num+1); ?> -
+						<a href="<?php echo e(URL::to('technician/download_files')); ?>?path=<?php echo e($file['path']); ?>&name=<?php echo e($file['name']); ?>" style="color:#009933;"><?php echo e($file['name']); ?></a></li>
+						
+						<?php endforeach; ?>
+						
+					<?php else: ?>
+						No other documents.
+					<?php endif; ?>
+					</ul>
+					</dl>
+					</div>
+					<div class="col-md-3 div_main" >
+					 <dl class="">
+						<dt>Location Name</dt>
+						<dd><?php echo e($detail['details'][0]['location_name']); ?></dd>
+						<dd>  <p> </p></dd>
+						<dt>Booking Time</dt>
+						<dd><?php echo e(date('d-m-Y h:i',strtotime($job->create_date))); ?></dd>
+						<dd>  <p> </p></dd>
+						<dt>Location Address</dt>
+						<dd><?php echo e($detail->address); ?></dd>
+						<dd>  <p> </p></dd>
+						<dt>Location Contact Name  & number</dt>
+						<dd><?php echo e($detail->contact); ?></dd>
+						<?php /*<dt>Job test documents </dt>
+						<dd></dd>
+						<dt>Job lab documents</dt>
+						<dd></dd>*/ ?>
+					</dl>
+					</div>
+					<div class="col-md-3 div_main" style="float: right;">
+					<dl class="">
+						<dt>Job consumables</dt>
+						<dd>
+						<?php if(!empty($test_material)): ?>
+							<?php foreach($test_material as $material): ?>
+								<?php foreach($material as $item): ?>
+								<?php if($item->type == "conusmable"): ?>
+									<?php echo e($item->name); ?>
+
+									 <br>
+								<?php endif; ?>
+								
+								 <?php endforeach; ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
+						</dd>
+						<dd>  <p> </p></dd>
+						<dt>Job materials list</dt>
+						<dd>
+							<?php if(!empty($test_material)): ?>
+							<?php foreach($test_material as $material): ?>
+								<?php foreach($material as $item): ?>
+								<?php if($item->type == "equipment"): ?>
+									<?php echo e($item->name); ?>
+
+									<br>
+								<?php endif; ?>
+								
+								 <?php endforeach; ?>
+							<?php endforeach; ?>
+							<?php endif; ?>
+						</dd>
+					</dl>
+					</div>
+					</div>
+					<dt>Job Description</dt>
+					<dd><?php echo e($job->description); ?></dd>
+					
+					</form>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<style>
+.field{
+	text-align:center;
+}
+.col-md-6 dd{
+margin-bottom : 10px;
+}
+.div_main {
+  
+    display: -webkit-flex; /* Safari */
+    -webkit-justify-content: space-around; /* Safari 6.1+ */
+    display: flex;
+    justify-content: space-around;
+}
+</style>
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

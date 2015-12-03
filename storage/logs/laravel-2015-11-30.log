@@ -1,0 +1,743 @@
+[2015-11-30 07:59:32] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/TechnicianController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 07:59:43] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/TechnicianController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 10:55:15] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ''wo' (T_ENCAPSED_AND_WHITESPACE), expecting ')'' in /home/www/html/app/Http/Controllers/HomeController.php:96
+Stack trace:
+#0 {main}  
+[2015-11-30 11:10:46] local.ERROR: exception 'ErrorException' with message 'Missing argument 1 for App\User::hasRole(), called in /home/www/html/vendor/compiled.php on line 10222 and defined' in /home/www/html/app/User.php:63
+Stack trace:
+#0 /home/www/html/app/User.php(63): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Missing argumen...', '/home/www/html/...', 63, Array)
+#1 /home/www/html/vendor/compiled.php(10222): App\User->hasRole()
+#2 /home/www/html/vendor/compiled.php(10196): Illuminate\Database\Eloquent\Model->getRelationshipFromMethod('hasRole')
+#3 /home/www/html/vendor/compiled.php(10470): Illuminate\Database\Eloquent\Model->getAttribute('hasRole')
+#4 /home/www/html/app/Http/Controllers/HomeController.php(37): Illuminate\Database\Eloquent\Model->__get('hasRole')
+#5 [internal function]: App\Http\Controllers\HomeController->__construct()
+#6 /home/www/html/vendor/compiled.php(1044): ReflectionClass->newInstanceArgs(Array)
+#7 /home/www/html/vendor/compiled.php(980): Illuminate\Container\Container->build('App\\Http\\Contro...', Array)
+#8 /home/www/html/vendor/compiled.php(1493): Illuminate\Container\Container->make('App\\Http\\Contro...', Array)
+#9 /home/www/html/vendor/compiled.php(8327): Illuminate\Foundation\Application->make('App\\Http\\Contro...')
+#10 /home/www/html/vendor/compiled.php(8316): Illuminate\Routing\ControllerDispatcher->makeController('App\\Http\\Contro...')
+#11 /home/www/html/vendor/compiled.php(7317): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'App\\Http\\Contro...', 'index')
+#12 /home/www/html/vendor/compiled.php(7288): Illuminate\Routing\Route->runWithCustomDispatcher(Object(Illuminate\Http\Request))
+#13 /home/www/html/vendor/compiled.php(6954): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#14 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#15 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#16 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#17 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#18 /home/www/html/vendor/compiled.php(6955): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#19 /home/www/html/vendor/compiled.php(6944): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#20 /home/www/html/vendor/compiled.php(6929): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#21 /home/www/html/vendor/compiled.php(1935): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#22 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#23 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#24 /home/www/html/vendor/compiled.php(2438): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#25 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#26 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#33 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#34 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#35 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#36 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#38 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#39 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#40 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#41 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#42 {main}  
+[2015-11-30 11:11:11] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /home/www/html/app/Http/Controllers/HomeController.php:93
+Stack trace:
+#0 {main}  
+[2015-11-30 11:21:15] local.ERROR: exception 'InvalidArgumentException' with message 'View [apps] not found.' in /home/www/html/vendor/compiled.php:12897
+Stack trace:
+#0 /home/www/html/vendor/compiled.php(12870): Illuminate\View\FileViewFinder->findInPaths('apps', Array)
+#1 /home/www/html/vendor/compiled.php(12995): Illuminate\View\FileViewFinder->find('apps')
+#2 /home/www/html/storage/framework/views/069e162ca8acd0ab1a7ca8e3ae343141(685): Illuminate\View\Factory->make('apps', Array)
+#3 /home/www/html/vendor/compiled.php(13649): include('/home/www/html/...')
+#4 /home/www/html/vendor/compiled.php(13682): Illuminate\View\Engines\PhpEngine->evaluatePath('/home/www/html/...', Array)
+#5 /home/www/html/vendor/compiled.php(13522): Illuminate\View\Engines\CompilerEngine->get('/home/www/html/...', Array)
+#6 /home/www/html/vendor/compiled.php(13509): Illuminate\View\View->getContents()
+#7 /home/www/html/vendor/compiled.php(13500): Illuminate\View\View->renderContents()
+#8 /home/www/html/vendor/compiled.php(14596): Illuminate\View\View->render()
+#9 /home/www/html/vendor/compiled.php(14125): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#10 /home/www/html/vendor/compiled.php(7154): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#11 /home/www/html/vendor/compiled.php(6954): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#12 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#13 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#14 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#16 /home/www/html/vendor/compiled.php(6955): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#17 /home/www/html/vendor/compiled.php(6944): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#18 /home/www/html/vendor/compiled.php(6929): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#19 /home/www/html/vendor/compiled.php(1935): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#20 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#21 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#22 /home/www/html/vendor/compiled.php(2438): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#23 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#33 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#34 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#35 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#36 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#37 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#38 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#39 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#40 {main}
+
+Next exception 'ErrorException' with message 'View [apps] not found. (View: /home/www/html/resources/views/order/index.blade.php)' in /home/www/html/vendor/compiled.php:12897
+Stack trace:
+#0 /home/www/html/vendor/compiled.php(13651): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(InvalidArgumentException), 1)
+#1 /home/www/html/vendor/compiled.php(13682): Illuminate\View\Engines\PhpEngine->evaluatePath('/home/www/html/...', Array)
+#2 /home/www/html/vendor/compiled.php(13522): Illuminate\View\Engines\CompilerEngine->get('/home/www/html/...', Array)
+#3 /home/www/html/vendor/compiled.php(13509): Illuminate\View\View->getContents()
+#4 /home/www/html/vendor/compiled.php(13500): Illuminate\View\View->renderContents()
+#5 /home/www/html/vendor/compiled.php(14596): Illuminate\View\View->render()
+#6 /home/www/html/vendor/compiled.php(14125): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#7 /home/www/html/vendor/compiled.php(7154): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#8 /home/www/html/vendor/compiled.php(6954): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#9 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#10 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#11 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#13 /home/www/html/vendor/compiled.php(6955): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#14 /home/www/html/vendor/compiled.php(6944): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#15 /home/www/html/vendor/compiled.php(6929): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#16 /home/www/html/vendor/compiled.php(1935): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#17 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#18 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#19 /home/www/html/vendor/compiled.php(2438): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#23 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#25 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#26 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#27 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#28 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#29 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#30 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#31 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#32 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#33 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#34 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#35 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#36 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#37 {main}  
+[2015-11-30 11:27:45] local.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in /home/www/html/storage/framework/views/b97666213f6779a553f95f7b363b1af0:45
+Stack trace:
+#0 /home/www/html/storage/framework/views/b97666213f6779a553f95f7b363b1af0(45): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'Trying to get p...', '/home/www/html/...', 45, Array)
+#1 /home/www/html/vendor/compiled.php(13649): include('/home/www/html/...')
+#2 /home/www/html/vendor/compiled.php(13682): Illuminate\View\Engines\PhpEngine->evaluatePath('/home/www/html/...', Array)
+#3 /home/www/html/vendor/compiled.php(13522): Illuminate\View\Engines\CompilerEngine->get('/home/www/html/...', Array)
+#4 /home/www/html/vendor/compiled.php(13509): Illuminate\View\View->getContents()
+#5 /home/www/html/vendor/compiled.php(13500): Illuminate\View\View->renderContents()
+#6 /home/www/html/vendor/compiled.php(14596): Illuminate\View\View->render()
+#7 /home/www/html/vendor/compiled.php(14125): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#8 /home/www/html/vendor/compiled.php(7154): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#9 /home/www/html/vendor/compiled.php(6954): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#10 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#11 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#12 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#13 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#14 /home/www/html/vendor/compiled.php(6955): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#15 /home/www/html/vendor/compiled.php(6944): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#16 /home/www/html/vendor/compiled.php(6929): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#17 /home/www/html/vendor/compiled.php(1935): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#18 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#19 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#20 /home/www/html/vendor/compiled.php(2438): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#21 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#33 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#34 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#35 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#36 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#37 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#38 {main}
+
+Next exception 'ErrorException' with message 'Trying to get property of non-object (View: /home/www/html/resources/views/customers/edit.blade.php)' in /home/www/html/storage/framework/views/b97666213f6779a553f95f7b363b1af0:45
+Stack trace:
+#0 /home/www/html/vendor/compiled.php(13651): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ErrorException), 1)
+#1 /home/www/html/vendor/compiled.php(13682): Illuminate\View\Engines\PhpEngine->evaluatePath('/home/www/html/...', Array)
+#2 /home/www/html/vendor/compiled.php(13522): Illuminate\View\Engines\CompilerEngine->get('/home/www/html/...', Array)
+#3 /home/www/html/vendor/compiled.php(13509): Illuminate\View\View->getContents()
+#4 /home/www/html/vendor/compiled.php(13500): Illuminate\View\View->renderContents()
+#5 /home/www/html/vendor/compiled.php(14596): Illuminate\View\View->render()
+#6 /home/www/html/vendor/compiled.php(14125): Illuminate\Http\Response->setContent(Object(Illuminate\View\View))
+#7 /home/www/html/vendor/compiled.php(7154): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View))
+#8 /home/www/html/vendor/compiled.php(6954): Illuminate\Routing\Router->prepareResponse(Object(Illuminate\Http\Request), Object(Illuminate\View\View))
+#9 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#10 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#11 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#13 /home/www/html/vendor/compiled.php(6955): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#14 /home/www/html/vendor/compiled.php(6944): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#15 /home/www/html/vendor/compiled.php(6929): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#16 /home/www/html/vendor/compiled.php(1935): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#17 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#18 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#19 /home/www/html/vendor/compiled.php(2438): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#23 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#25 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#26 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#27 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#28 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#29 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#30 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#31 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#32 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#33 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#34 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#35 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#36 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#37 {main}  
+[2015-11-30 11:45:31] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/HomeController.php:38
+Stack trace:
+#0 {main}  
+[2015-11-30 11:45:34] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/HomeController.php:38
+Stack trace:
+#0 {main}  
+[2015-11-30 11:45:38] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/HomeController.php:38
+Stack trace:
+#0 {main}  
+[2015-11-30 11:49:39] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/TechnicianController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 11:55:34] local.ERROR: exception 'ReflectionException' with message 'Class App\Http\Middleware\RedirectIfAuthenticated does not exist' in /home/www/html/vendor/compiled.php:1029
+Stack trace:
+#0 /home/www/html/vendor/compiled.php(1029): ReflectionClass->__construct('App\\Http\\Middle...')
+#1 /home/www/html/vendor/compiled.php(980): Illuminate\Container\Container->build('App\\Http\\Middle...', Array)
+#2 /home/www/html/vendor/compiled.php(1493): Illuminate\Container\Container->make('App\\Http\\Middle...', Array)
+#3 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Application->make('App\\Http\\Middle...')
+#4 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#5 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#6 /home/www/html/vendor/compiled.php(8334): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#7 /home/www/html/vendor/compiled.php(8320): Illuminate\Routing\ControllerDispatcher->callWithinStack(Object(App\Http\Controllers\Auth\AuthController), Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'getLogin')
+#8 /home/www/html/vendor/compiled.php(7317): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'App\\Http\\Contro...', 'getLogin')
+#9 /home/www/html/vendor/compiled.php(7288): Illuminate\Routing\Route->runWithCustomDispatcher(Object(Illuminate\Http\Request))
+#10 /home/www/html/vendor/compiled.php(6954): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#11 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#12 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#13 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#14 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#15 /home/www/html/vendor/compiled.php(6955): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#16 /home/www/html/vendor/compiled.php(6944): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#17 /home/www/html/vendor/compiled.php(6929): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#18 /home/www/html/vendor/compiled.php(1935): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#19 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#20 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#21 /home/www/html/vendor/compiled.php(2438): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#25 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#26 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#27 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#28 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#29 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#30 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#31 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#32 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#33 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#34 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#35 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#36 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#37 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#38 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#39 {main}  
+[2015-11-30 11:57:05] local.ERROR: exception 'ErrorException' with message 'Undefined property: App\Http\Controllers\HomeController::$auth' in /home/www/html/app/Http/Controllers/HomeController.php:37
+Stack trace:
+#0 /home/www/html/app/Http/Controllers/HomeController.php(37): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'Undefined prope...', '/home/www/html/...', 37, Array)
+#1 [internal function]: App\Http\Controllers\HomeController->__construct()
+#2 /home/www/html/vendor/compiled.php(1044): ReflectionClass->newInstanceArgs(Array)
+#3 /home/www/html/vendor/compiled.php(980): Illuminate\Container\Container->build('App\\Http\\Contro...', Array)
+#4 /home/www/html/vendor/compiled.php(1493): Illuminate\Container\Container->make('App\\Http\\Contro...', Array)
+#5 /home/www/html/vendor/compiled.php(8327): Illuminate\Foundation\Application->make('App\\Http\\Contro...')
+#6 /home/www/html/vendor/compiled.php(8316): Illuminate\Routing\ControllerDispatcher->makeController('App\\Http\\Contro...')
+#7 /home/www/html/vendor/compiled.php(7317): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'App\\Http\\Contro...', 'index')
+#8 /home/www/html/vendor/compiled.php(7288): Illuminate\Routing\Route->runWithCustomDispatcher(Object(Illuminate\Http\Request))
+#9 /home/www/html/vendor/compiled.php(6954): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#10 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#11 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#12 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#13 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#14 /home/www/html/vendor/compiled.php(6955): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#15 /home/www/html/vendor/compiled.php(6944): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#16 /home/www/html/vendor/compiled.php(6929): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#17 /home/www/html/vendor/compiled.php(1935): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#18 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#19 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#20 /home/www/html/vendor/compiled.php(2438): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#21 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#33 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#34 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#35 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#36 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#37 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#38 {main}  
+[2015-11-30 12:03:46] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:06] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:06] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:06] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:09] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:09] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:09] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:26] local.ERROR: exception 'ReflectionException' with message 'Class App\Http\Controllers\HomeController does not exist' in /home/www/html/vendor/compiled.php:1029
+Stack trace:
+#0 /home/www/html/vendor/compiled.php(1029): ReflectionClass->__construct('App\\Http\\Contro...')
+#1 /home/www/html/vendor/compiled.php(980): Illuminate\Container\Container->build('App\\Http\\Contro...', Array)
+#2 /home/www/html/vendor/compiled.php(1493): Illuminate\Container\Container->make('App\\Http\\Contro...', Array)
+#3 /home/www/html/vendor/compiled.php(8327): Illuminate\Foundation\Application->make('App\\Http\\Contro...')
+#4 /home/www/html/vendor/compiled.php(8316): Illuminate\Routing\ControllerDispatcher->makeController('App\\Http\\Contro...')
+#5 /home/www/html/vendor/compiled.php(7317): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'App\\Http\\Contro...', 'index')
+#6 /home/www/html/vendor/compiled.php(7288): Illuminate\Routing\Route->runWithCustomDispatcher(Object(Illuminate\Http\Request))
+#7 /home/www/html/vendor/compiled.php(6954): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#9 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#10 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#11 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#12 /home/www/html/vendor/compiled.php(6955): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#13 /home/www/html/vendor/compiled.php(6944): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#14 /home/www/html/vendor/compiled.php(6929): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#15 /home/www/html/vendor/compiled.php(1935): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#16 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#17 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#18 /home/www/html/vendor/compiled.php(2438): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#19 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#20 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#33 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#34 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#35 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#36 {main}  
+[2015-11-30 12:04:26] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:28] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:28] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:28] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:28] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:30] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:31] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:31] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:32] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:33] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:33] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:33] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:48] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:50] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:51] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:04:52] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:05:15] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:05:15] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:05:16] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:05:17] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:05:18] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:05:18] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:05:20] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:05:44] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:05:45] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:05:46] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:05:47] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:05:47] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:05:47] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in /home/www/html/app/Http/Controllers/HomeController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:06:06] local.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in /home/www/html/app/Http/Controllers/HomeController.php:38
+Stack trace:
+#0 /home/www/html/app/Http/Controllers/HomeController.php(38): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'Trying to get p...', '/home/www/html/...', 38, Array)
+#1 [internal function]: App\Http\Controllers\HomeController->__construct()
+#2 /home/www/html/vendor/compiled.php(1044): ReflectionClass->newInstanceArgs(Array)
+#3 /home/www/html/vendor/compiled.php(980): Illuminate\Container\Container->build('App\\Http\\Contro...', Array)
+#4 /home/www/html/vendor/compiled.php(1493): Illuminate\Container\Container->make('App\\Http\\Contro...', Array)
+#5 /home/www/html/vendor/compiled.php(8327): Illuminate\Foundation\Application->make('App\\Http\\Contro...')
+#6 /home/www/html/vendor/compiled.php(8316): Illuminate\Routing\ControllerDispatcher->makeController('App\\Http\\Contro...')
+#7 /home/www/html/vendor/compiled.php(7317): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'App\\Http\\Contro...', 'index')
+#8 /home/www/html/vendor/compiled.php(7288): Illuminate\Routing\Route->runWithCustomDispatcher(Object(Illuminate\Http\Request))
+#9 /home/www/html/vendor/compiled.php(6954): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#10 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#11 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#12 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#13 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#14 /home/www/html/vendor/compiled.php(6955): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#15 /home/www/html/vendor/compiled.php(6944): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#16 /home/www/html/vendor/compiled.php(6929): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#17 /home/www/html/vendor/compiled.php(1935): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#18 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#19 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#20 /home/www/html/vendor/compiled.php(2438): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#21 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#33 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#34 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#35 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#36 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#37 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#38 {main}  
+[2015-11-30 12:06:07] local.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in /home/www/html/app/Http/Controllers/HomeController.php:38
+Stack trace:
+#0 /home/www/html/app/Http/Controllers/HomeController.php(38): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'Trying to get p...', '/home/www/html/...', 38, Array)
+#1 [internal function]: App\Http\Controllers\HomeController->__construct()
+#2 /home/www/html/vendor/compiled.php(1044): ReflectionClass->newInstanceArgs(Array)
+#3 /home/www/html/vendor/compiled.php(980): Illuminate\Container\Container->build('App\\Http\\Contro...', Array)
+#4 /home/www/html/vendor/compiled.php(1493): Illuminate\Container\Container->make('App\\Http\\Contro...', Array)
+#5 /home/www/html/vendor/compiled.php(8327): Illuminate\Foundation\Application->make('App\\Http\\Contro...')
+#6 /home/www/html/vendor/compiled.php(8316): Illuminate\Routing\ControllerDispatcher->makeController('App\\Http\\Contro...')
+#7 /home/www/html/vendor/compiled.php(7317): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'App\\Http\\Contro...', 'index')
+#8 /home/www/html/vendor/compiled.php(7288): Illuminate\Routing\Route->runWithCustomDispatcher(Object(Illuminate\Http\Request))
+#9 /home/www/html/vendor/compiled.php(6954): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#10 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#11 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#12 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#13 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#14 /home/www/html/vendor/compiled.php(6955): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#15 /home/www/html/vendor/compiled.php(6944): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#16 /home/www/html/vendor/compiled.php(6929): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#17 /home/www/html/vendor/compiled.php(1935): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#18 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#19 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#20 /home/www/html/vendor/compiled.php(2438): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#21 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#33 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#34 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#35 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#36 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#37 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#38 {main}  
+[2015-11-30 12:06:09] local.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in /home/www/html/app/Http/Controllers/HomeController.php:38
+Stack trace:
+#0 /home/www/html/app/Http/Controllers/HomeController.php(38): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'Trying to get p...', '/home/www/html/...', 38, Array)
+#1 [internal function]: App\Http\Controllers\HomeController->__construct()
+#2 /home/www/html/vendor/compiled.php(1044): ReflectionClass->newInstanceArgs(Array)
+#3 /home/www/html/vendor/compiled.php(980): Illuminate\Container\Container->build('App\\Http\\Contro...', Array)
+#4 /home/www/html/vendor/compiled.php(1493): Illuminate\Container\Container->make('App\\Http\\Contro...', Array)
+#5 /home/www/html/vendor/compiled.php(8327): Illuminate\Foundation\Application->make('App\\Http\\Contro...')
+#6 /home/www/html/vendor/compiled.php(8316): Illuminate\Routing\ControllerDispatcher->makeController('App\\Http\\Contro...')
+#7 /home/www/html/vendor/compiled.php(7317): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'App\\Http\\Contro...', 'index')
+#8 /home/www/html/vendor/compiled.php(7288): Illuminate\Routing\Route->runWithCustomDispatcher(Object(Illuminate\Http\Request))
+#9 /home/www/html/vendor/compiled.php(6954): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#10 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#11 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#12 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#13 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#14 /home/www/html/vendor/compiled.php(6955): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#15 /home/www/html/vendor/compiled.php(6944): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#16 /home/www/html/vendor/compiled.php(6929): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#17 /home/www/html/vendor/compiled.php(1935): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#18 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#19 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#20 /home/www/html/vendor/compiled.php(2438): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#21 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#33 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#34 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#35 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#36 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#37 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#38 {main}  
+[2015-11-30 12:06:42] local.ERROR: exception 'ReflectionException' with message 'Class App\Http\Controllers\HomeController does not exist' in /home/www/html/vendor/compiled.php:1029
+Stack trace:
+#0 /home/www/html/vendor/compiled.php(1029): ReflectionClass->__construct('App\\Http\\Contro...')
+#1 /home/www/html/vendor/compiled.php(980): Illuminate\Container\Container->build('App\\Http\\Contro...', Array)
+#2 /home/www/html/vendor/compiled.php(1493): Illuminate\Container\Container->make('App\\Http\\Contro...', Array)
+#3 /home/www/html/vendor/compiled.php(8327): Illuminate\Foundation\Application->make('App\\Http\\Contro...')
+#4 /home/www/html/vendor/compiled.php(8316): Illuminate\Routing\ControllerDispatcher->makeController('App\\Http\\Contro...')
+#5 /home/www/html/vendor/compiled.php(7317): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'App\\Http\\Contro...', 'index')
+#6 /home/www/html/vendor/compiled.php(7288): Illuminate\Routing\Route->runWithCustomDispatcher(Object(Illuminate\Http\Request))
+#7 /home/www/html/vendor/compiled.php(6954): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#9 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#10 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#11 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#12 /home/www/html/vendor/compiled.php(6955): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#13 /home/www/html/vendor/compiled.php(6944): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#14 /home/www/html/vendor/compiled.php(6929): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#15 /home/www/html/vendor/compiled.php(1935): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#16 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#17 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#18 /home/www/html/vendor/compiled.php(2438): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#19 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#20 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#33 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#34 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#35 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#36 {main}  
+[2015-11-30 12:07:37] local.ERROR: exception 'ReflectionException' with message 'Class App\Http\Controllers\HomeController does not exist' in /home/www/html/vendor/compiled.php:1029
+Stack trace:
+#0 /home/www/html/vendor/compiled.php(1029): ReflectionClass->__construct('App\\Http\\Contro...')
+#1 /home/www/html/vendor/compiled.php(980): Illuminate\Container\Container->build('App\\Http\\Contro...', Array)
+#2 /home/www/html/vendor/compiled.php(1493): Illuminate\Container\Container->make('App\\Http\\Contro...', Array)
+#3 /home/www/html/vendor/compiled.php(8327): Illuminate\Foundation\Application->make('App\\Http\\Contro...')
+#4 /home/www/html/vendor/compiled.php(8316): Illuminate\Routing\ControllerDispatcher->makeController('App\\Http\\Contro...')
+#5 /home/www/html/vendor/compiled.php(7317): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'App\\Http\\Contro...', 'index')
+#6 /home/www/html/vendor/compiled.php(7288): Illuminate\Routing\Route->runWithCustomDispatcher(Object(Illuminate\Http\Request))
+#7 /home/www/html/vendor/compiled.php(6954): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#9 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#10 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#11 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#12 /home/www/html/vendor/compiled.php(6955): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#13 /home/www/html/vendor/compiled.php(6944): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#14 /home/www/html/vendor/compiled.php(6929): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#15 /home/www/html/vendor/compiled.php(1935): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#16 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#17 /home/www/html/vendor/compiled.php(8952): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#18 /home/www/html/vendor/compiled.php(2438): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#19 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#20 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#33 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#34 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#35 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#36 {main}  
+[2015-11-30 12:07:37] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file, expecting '('' in /home/www/html/app/Http/Controllers/HomeController.php:95
+Stack trace:
+#0 {main}  
+[2015-11-30 12:10:11] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/TechnicianController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:10:23] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/TechnicianController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:38:03] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/TechnicianController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:38:11] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/TechnicianController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:42:23] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/TechnicianController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:42:25] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/TechnicianController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:42:25] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/TechnicianController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:42:25] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/TechnicianController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:42:26] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to a member function hasRole() on a non-object' in /home/www/html/app/Http/Controllers/TechnicianController.php:39
+Stack trace:
+#0 {main}  
+[2015-11-30 12:46:20] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /home/www/html/storage/framework/views/4fba407a41209754e6b44550d13c8282:43
+Stack trace:
+#0 {main}  
+[2015-11-30 12:46:21] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /home/www/html/storage/framework/views/4fba407a41209754e6b44550d13c8282:43
+Stack trace:
+#0 {main}  
+[2015-11-30 12:46:23] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /home/www/html/storage/framework/views/4fba407a41209754e6b44550d13c8282:43
+Stack trace:
+#0 {main}  
+[2015-11-30 12:46:42] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /home/www/html/storage/framework/views/4fba407a41209754e6b44550d13c8282:43
+Stack trace:
+#0 {main}  
+[2015-11-30 12:46:44] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /home/www/html/storage/framework/views/4fba407a41209754e6b44550d13c8282:43
+Stack trace:
+#0 {main}  
+[2015-11-30 12:48:26] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /home/www/html/storage/framework/views/4fba407a41209754e6b44550d13c8282:43
+Stack trace:
+#0 {main}  
+[2015-11-30 12:49:09] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /home/www/html/storage/framework/views/4fba407a41209754e6b44550d13c8282:43
+Stack trace:
+#0 {main}  
+[2015-11-30 12:49:10] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /home/www/html/storage/framework/views/4fba407a41209754e6b44550d13c8282:43
+Stack trace:
+#0 {main}  
+[2015-11-30 12:49:10] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /home/www/html/storage/framework/views/4fba407a41209754e6b44550d13c8282:43
+Stack trace:
+#0 {main}  
+[2015-11-30 19:21:19] local.ERROR: exception 'Illuminate\Session\TokenMismatchException' in /home/www/html/vendor/compiled.php:2440
+Stack trace:
+#0 /home/www/html/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#1 /home/www/html/vendor/compiled.php(8944): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#2 /home/www/html/vendor/compiled.php(12083): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#3 /home/www/html/vendor/compiled.php(8944): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#4 /home/www/html/vendor/compiled.php(10785): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#5 /home/www/html/vendor/compiled.php(8944): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#6 /home/www/html/vendor/compiled.php(11789): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#7 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#8 /home/www/html/vendor/compiled.php(11738): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#9 /home/www/html/vendor/compiled.php(8944): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#10 /home/www/html/vendor/compiled.php(2478): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#11 /home/www/html/vendor/compiled.php(8944): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#12 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#13 /home/www/html/vendor/compiled.php(8935): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#14 /home/www/html/vendor/compiled.php(1891): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#15 /home/www/html/vendor/compiled.php(1880): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#16 /home/www/html/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#17 {main}  

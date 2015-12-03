@@ -1,0 +1,148 @@
+
+<?php $__env->startSection('content'); ?>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">Requested Orders</div>
+				<div class="panel-body">
+				<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>Order #</th>
+						<th>Customer</th>
+						<th>Site Name</th>
+						<th>$ Total</th>
+						<th>Status</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php $i = 1 ; ?>
+				<?php foreach($orders as $key => $value): ?>
+				<?php if($value->status ==0): ?>
+					<tr>
+						<td>#<?php echo e($value->id); ?></td>
+						<td><?php echo e($value->customer['contact_name']); ?></td>
+						<td><?php echo e($value->site['name']); ?></td>
+						<td>0.00</td>
+						<td>
+						<?php if($value->status): ?>
+							<span class="bg-success">Approved</span>
+						<?php else: ?>
+							<span class="bg-info">Pending </span>
+						<?php endif; ?>
+						 </td>
+		 
+						<td>
+						<!--<a class="btn btn-primary" href="<?php echo e(URL::to('home/edit-order')); ?>/<?php echo e($value->id); ?>" role="button"><i class="glyphicon glyphicon-edit"></i> Edit </a> -->
+						<?php if($value->status == 0): ?> 
+							<a class="btn btn-primary" href="<?php echo e(URL::to('home/order-reveiw')); ?>/<?php echo e($value->id); ?>" role="button"><i class="glyphicon glyphicon-edit"></i> Review </a>
+						<?php elseif($value->status == 1): ?> 
+							<a class="btn btn-primary review" href="javascript:void(0)" role="button"><i class="glyphicon glyphicon-edit"></i>Review </a>
+						
+						<?php endif; ?>
+						</td>
+					</tr>
+					<?php endif; ?>
+					<?php $i++; ?>
+				<?php endforeach; ?>
+				</tbody>
+				</table> 
+				</div>
+			</div>
+			<div class="review-panel panel panel-default">
+				<div class="panel-heading progress-heading">Orders in Progress</div>
+				<div class="panel-body">
+				<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>Order #</th>
+						<th>Customer</th>
+						<th>Site Name</th>
+						<th>Field Tech</th>
+						<th>Scheduled</th>
+						<th>Comments</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+				<?php 
+				if(isset($tech) && !empty($tech)){ 
+				 
+				?>
+					
+					<?php foreach($tech as $value): ?>
+						
+						<tr>
+						<td>#<?php echo e($value->id); ?></td>
+						<td><?php echo e($value->contact_name); ?></td>
+						<td><?php echo e($value->site_name); ?></td>
+						<td><?php if(isset( $value->field_tech)): ?>
+							<?php echo e($value->field_tech); ?> 
+						<?php endif; ?>
+						</td>
+						<td><?php if(isset( $value->event_id )): ?>
+							<?php echo e($value->date_start); ?> <?php echo e($value->time_start); ?> - <?php echo e($value->date_end); ?> <?php echo e($value->time_end); ?>
+
+						<?php endif; ?></td>
+						<td><?php if(isset($value->event_id )): ?>
+							<?php echo e($value->description); ?>
+
+						<?php endif; ?></td>
+						<td> </td>
+					</tr>
+						
+					<?php endforeach; ?>		
+					<?php 
+				}
+				?>
+				
+				<?php foreach($orders as $key => $value): ?>
+					<?php if($value->status == 1): ?>
+						<tr>
+						<td>#<?php echo e($value->id); ?></td>
+						<td><?php echo e($value->customer['contact_name']); ?></td>
+						<td><?php echo e($value->site['name']); ?></td>
+						<td><?php if(isset($technician[$value->id])): ?>
+							<?php echo e($technician[$value->id]->name); ?> 
+						<?php endif; ?>
+						</td>
+						<td><?php if(isset($technician[$value->id])): ?>
+							<?php echo e($technician[$value->id]->date_start); ?> <?php echo e($technician[$value->id]->time_start); ?> - <?php echo e($technician[$value->id]->date_end); ?> <?php echo e($technician[$value->id]->time_end); ?>
+
+						<?php endif; ?></td>
+						<td><?php if(isset($technician[$value->id])): ?>
+							<?php echo e($technician[$value->id]->description); ?>
+
+						<?php endif; ?></td>
+						<td><a class="btn btn-primary" href="<?php echo e(URL::to('home/order-reveiw')); ?>/<?php echo e($value->id); ?>?detail=true" role="button"><i class="glyphicon glyphicon-edit"></i> Detail </a></td>
+					</tr>
+					<?php endif; ?>
+				<?php endforeach; ?>
+				</tbody>
+				</table> 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+.progress-heading{
+	background-color:green !important;
+	color:#fff !important;
+}
+</style>
+<script>
+$(document).ready(function(){
+   $('.review').click(function(){
+		$( "html, body" ).animate({
+				scrollTop: $('.review-panel').offset().top,
+		}, 1000);
+   });
+});
+</script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

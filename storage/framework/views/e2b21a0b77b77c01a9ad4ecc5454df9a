@@ -1,0 +1,74 @@
+<?php $__env->startSection('content'); ?>
+
+	<div class="add-listing">
+	<div class="listing-req pull-right">Add to request listing? <button type="button" class="btn btn-success yes-btn">yes</button> </div>
+	
+<form class="form-horizontal" method="POST" action="<?php echo e(URL::to('')); ?>">
+<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">  
+<input type="hidden" name="_method" value="POST">
+
+	<div class="collapse navbar-collapse bs-example-js-navbar-collapse">
+	<ul class="nav navbar-nav ">
+		<li class="dropdown dropdown-bg">
+		  
+		  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			Parameter
+			<span class="caret"></span>
+		  </a>
+		  
+		  <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne"> 
+		  
+		  <ul class="dropdown-menu dropdown-list">
+			<div class="q-mark"><input type="text" class="form-control filters-input" id="parameter" placeholder = "Type Parameter" />
+			<input type="hidden" id="param_id">
+			</div>
+			<div id="parameter_container">
+			 <li class="divider" role="presentation"></li>
+				<?php foreach($parameters as $params): ?>
+					<li role="presentation">
+					<a href="javascript:void(0);" type="param" id="param_<?php echo e($params->id); ?>" class="param-link" tabindex="-1" role="menuitem"><?php echo e($params->name); ?></a>
+					</li>
+				<?php endforeach; ?>
+		    </div>
+			</ul>
+			</div>
+		  
+		</li>
+		</ul>
+          
+        </div>
+</form>
+	</div>
+
+ <script>
+	$(function() {
+			$('#parameter').fastLiveFilter('#parameter_container');
+	});	
+				
+		$(document).ready(function() {
+			$(".param-link").on( "click", function() {
+			var paramValue = $(this).text();
+			var paramStr = $(this).attr('id');
+			var paramId = paramStr.split('_');
+			$('#parameter').attr('value',paramValue);
+			$('#param_id').attr('value',paramId[1]);
+			$('#param-collapse').trigger('click');
+			var postData = {'param_id' :paramId[1],'_token' : '<?php echo e(csrf_token()); ?>'};	
+			var html1 = '';
+			$.ajax({
+				type: "POST",
+				dataType: "json",
+				url: "order/getState", //Relative or absolute path to 
+				data: postData,
+				success: function(data) { 
+				
+				}
+			});
+				
+			});
+		});				
+		 </script>
+ 
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

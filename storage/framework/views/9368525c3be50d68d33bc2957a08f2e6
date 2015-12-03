@@ -1,0 +1,262 @@
+<?php $__env->startSection('content'); ?>
+<script>
+ var orderData = {}; 
+</script>
+<div class="container" ng-app="" ng-controller="Order">
+<?php //echo '<pre>';  print_r($order);  die; ?>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">Edit Order</div>
+				<div class="panel-body">
+					<form class="form-horizontal" method="POST" id="order_form" action="<?php echo e(URL::to('home/update-order')); ?>/<?php echo e($order['id']); ?>">
+						<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">  
+						<input type="hidden" name="_method" value="POST">
+						
+						<div class="form-group required">
+							<label class="col-md-2 control-label">Order ID:</label>
+							<div class="col-md-3">
+								<strong>#<?php echo e($order['id']); ?></strong>
+							</div>
+						</div>
+						<div class="form-group required">
+							<label class="col-md-2 control-label">Customer Name:</label>
+							<div class="col-md-3">
+								<strong><?php echo e($order['contact_name']); ?></strong>
+							</div>
+						</div>
+						<?php foreach($order['details'] as $detail): ?>
+						<?php $items = $order['items'][$detail->test_id];
+						?>
+						<hr/>
+							<div class="form-group required">
+								<label class="col-md-2 control-label">Parameter</label>
+								<div class="col-md-3">
+									<select class="form-control" ng-model="selectedParms[<?php echo e($detail->id); ?>]" ng-init="selectedParms[<?php echo e($detail->id); ?>]='<?php echo e($detail->parameter); ?>'" ng-change="getState(selectedParms[<?php echo e($detail->id); ?>],<?php echo e($detail->id); ?>)" name="parameter[<?php echo e($detail->id); ?>]">
+										<?php foreach($parameters as $val): ?>
+											<option><?php echo e($val->name); ?></option>
+											 
+										<?php endforeach; ?>
+										
+									</select>
+								</div>
+							</div>
+							
+						<div class="form-group required">
+								<label class="col-md-2 control-label">State</label>
+								<div class="col-md-3">
+									<select name="state[<?php echo e($detail->id); ?>]" class="form-control" ng-model="selectedStates[<?php echo e($detail->id); ?>]" ng-init="selectedStates[<?php echo e($detail->id); ?>]='<?php echo e($detail->state); ?>'" ng-change="getMethod(selectedStates[<?php echo e($detail->id); ?>],<?php echo e($detail->id); ?>)">
+									<option ng-repeat="order in orderData[<?php echo e($detail->id); ?>].state">{{order}}</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group required">
+								<label class="col-md-2 control-label">Method</label>
+								<div class="col-md-3">
+									<select name="method[<?php echo e($detail->id); ?>]" class="form-control" ng-model="selectedMethod[<?php echo e($detail->id); ?>]" ng-init="selectedMethod[<?php echo e($detail->id); ?>]='<?php echo e($detail->method); ?>'" ng-change="getTestMethod(selectedMethod[<?php echo e($detail->id); ?>],<?php echo e($detail->id); ?>)">
+									<option ng-repeat="method in orderData[<?php echo e($detail->id); ?>].method">{{method}}</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group required">
+								<label class="col-md-2 control-label">Test method</label>
+								<div class="col-md-3">
+									<select name="test_method[<?php echo e($detail->id); ?>]" class="form-control" ng-model="selectedTestMethod[<?php echo e($detail->id); ?>]" ng-init="selectedTestMethod[<?php echo e($detail->id); ?>]='<?php echo e($detail->test_method); ?>'" >
+									<option ng-repeat="test_method in orderData[<?php echo e($detail->id); ?>].test_method">{{test_method}}</option>
+									</select> 
+								</div>
+							</div>
+							<div class="form-group required">
+								<label class="col-md-2 control-label">Quantity</label>
+								<div class="col-md-3">
+									<input type="text" name="quantity[<?php echo e($detail->id); ?>]" value="<?php echo e($detail->quantity); ?>" class="form-control">
+								</div>
+							</div>
+							<div class="form-group required">
+								<label class="col-md-2 control-label">Price</label>
+								<div class="col-md-3">
+									<input type="text" name="price[<?php echo e($detail->id); ?>]" value="<?php echo e($detail->price); ?>" class="form-control">
+								</div>
+							</div>
+							<?php if(!empty($items)) { ?>
+							<div class="form-group required">
+								<label class="col-md-2 control-label">Process Items</label>
+								<div class="col-md-3">
+									<select class="form-control">
+									<?php
+										foreach($items as $item) {?>
+											<option><?php echo e($item->name); ?></option>
+											 
+									<?php
+										}
+									  ?>
+									</select>
+								</div>
+							</div>
+							<?php }?>
+							<script>
+							orderData[<?php echo e($detail->id); ?>] = { id : <?php echo e($detail->id); ?>, state : ['<?php echo $detail->state; ?>'], method : ['<?php echo $detail->method; ?>'],'test_method':['<?php echo $detail->test_method; ?>']}; 
+							</script>	
+						
+						<?php endforeach; ?>
+						<input type="hidden" ng-repeat="test in tests track by $index" value="{{test.test_id}}" name="test_id[{{test.id}}]"> 
+						<div class="form-group">
+							<div class="col-md-6 col-md-offset-2">
+								<button type="submit" class="btn btn-primary">
+									Update
+								</button>
+								<a href="<?php echo e(URL::to('home')); ?>" class="btn btn-primary">Cancel</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+ 
+<script>
+var parameters = {};
+ <?php 
+	foreach($parameters as $val){ ?>
+		parameters[<?php echo e($val->id); ?>] = { id : '<?php echo e($val->id); ?>', name :escape('<?php echo e($val->name); ?>')}; 
+		<?php
+	}
+?>
+ 
+function Order($scope,$http){
+	$scope.orderData = orderData;
+	$scope.selectedParms = {};
+	$scope.selectedStates = {};
+	$scope.selectedMethod = {};
+	$scope.selectedTestMethod = {};
+	$scope.states = {};
+	$scope.methods = {};
+	$scope.test_methods = {};
+	$scope.tests = {};
+	$scope.parameters = parameters;
+	$scope.param_id = 0;
+	$scope.state_id = 0;
+	$scope.method_id = 0;
+	
+	$scope.getState = function(pra,objId){
+		var pram = escape(pra);
+		for(i in $scope.parameters){
+			if($scope.parameters[i].name == pram){
+				$scope.param_id = $scope.parameters[i].id;
+				break;
+			}
+		}
+		if($scope.param_id){
+			var postData = {'param_id' :$scope.param_id,'_token' : '<?php echo e(csrf_token()); ?>'};
+			var response = $http.post(siteUrl+"/order/getState",postData);
+			response.success(function(data, status, headers, config){
+				 
+				if(Object.keys(data).length > 0){
+				    var states = [];
+					var statesInfo = {};
+					states.push('-select-');
+					for(i in data){
+						states.push(data[i].name);
+						statesInfo[data[i].id] = { id : data[i].id, name : data[i].name};
+					}
+					$scope.states = statesInfo;
+					$scope.selectedStates[objId] = '-select-';
+					$scope.orderData[objId].state = states;
+					$scope.orderData[objId].method = '';
+					$scope.orderData[objId].test_method = '';
+				}
+			}); 
+			
+		}
+	}
+	$scope.getMethod = function(pra,objId){
+		for(i in $scope.states){
+			if($scope.states[i].name == pra){
+				$scope.state_id = $scope.states[i].id;
+				break;
+			}
+		}
+		if($scope.state_id){
+			var postData = {'state_id':$scope.state_id,'param_id' :$scope.param_id,'_token' : '<?php echo e(csrf_token()); ?>'};
+			var response = $http.post(siteUrl+"/order/getMethod",postData);
+			response.success(function(data, status, headers, config){
+				 
+				if(Object.keys(data).length > 0){
+					var methods = [];
+					var methodsInfo = {};
+					methods.push('-select-');
+					for(i in data){
+						methods.push(data[i].name);
+						methodsInfo[data[i].method_id] = { id : data[i].method_id, name : data[i].name};
+					}
+					$scope.selectedMethod[objId] = '-select-';
+					$scope.methods = methodsInfo;
+					$scope.orderData[objId].method = '';
+					$scope.orderData[objId].test_method = '';
+					$scope.orderData[objId].method = methods;
+				}
+			});
+		}
+	}
+	$scope.getTestMethod = function(pra,objId){
+		for(i in $scope.methods){
+			if($scope.methods[i].name == pra){
+				$scope.method_id = $scope.methods[i].id;
+				break;
+			}
+		}
+		if($scope.method_id){
+			var postData = {'method_id' :$scope.method_id,'param_id' : $scope.param_id,'state_id' : $scope.state_id,'_token' : '<?php echo e(csrf_token()); ?>'};
+			var response = $http.post(siteUrl+"/order/getTestMethod",postData);
+			response.success(function(data, status, headers, config){
+				if(Object.keys(data).length > 0){
+					var test_methods = [];
+					var test_methodsInfo = {};
+					test_methods.push('-select-');
+					for(i in data){
+						test_methods.push(data[i].name);
+						test_methodsInfo[data[i].test_method_id] = { id : data[i].test_method_id, name : data[i].name};
+					}
+					$scope.tests[data[0].id] = {id:objId, test_id : data[0].id};  
+					$scope.selectedTestMethod[objId] = '-select-';
+					$scope.test_methods = test_methodsInfo;
+					$scope.orderData[objId].test_method = test_methods;
+					
+				}
+				
+			}); 
+			
+		}
+		 
+	}
+	$('#order_form').submit(function(){
+		var error = 0;
+		for(i in $scope.orderData){
+			if(!isValid($scope.selectedStates) || !isValid($scope.selectedMethod) || !isValid($scope.selectedTestMethod)){
+				error = 1;
+				break 
+			} 
+		}
+		if(error){
+			alert('Please select correct test');
+			return false;
+		}
+		 
+	});
+	
+	function isValid(array){
+		for(i in array){
+			if(array[i] == '-select-' || array[i] == ''){
+				return false;
+			}
+		}
+		return true;
+	}
+	 
+}
+</script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

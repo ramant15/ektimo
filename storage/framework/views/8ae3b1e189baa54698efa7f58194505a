@@ -1,0 +1,34 @@
+<html> 
+	<body> 
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Parameter</th>
+					<th>State</th>
+					<th>Method type</th>
+					<th>Test Method</th>
+					<th>Sampling</th>
+					<th>Analysis</th>
+					<th>Quantity</th>
+					<?php foreach($test_processes as $key=>$item): ?>
+					<th>Kit-<?php echo e($key+1); ?></th>
+					<?php endforeach; ?>
+				</tr>
+			</thead>
+			<?php foreach($order['details'] as $value): ?>
+				<tr>
+					<td><?php echo e($value->parameter); ?></td>
+					<td><?php echo e($value->state); ?></td>
+					<td><?php echo e($value->method_type); ?></td>
+					<td><?php echo e($value->method); ?></td>
+					<td><?php echo e($value->sampling); ?></td>
+					<td><?php echo e($value->Analysis); ?></td>
+					<td><?php echo e($value->quantity); ?></td>
+				<?php foreach($test_processes as $key=>$item): ?>
+					<td><?php echo e($item->name); ?> <?php if($item->image): ?><img src="public/ItemImages/<?php echo e($item->image); ?>" width="50" height="100" /><?php endif; ?></td>
+				<?php endforeach; ?>
+				</tr>
+			<?php endforeach; ?>	
+		</table> 
+	</body> 
+</html>

@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Ektimo</title>
-
+	<link rel="shortcut icon" href="<?php echo e(asset('/images/favicon.ico')); ?>" type="image/x-icon">
 	<link href="<?php echo e(asset('/css/app.css')); ?>" rel="stylesheet">
 	<script src="<?php echo e(asset('/js/2.1.3_jquery.min.js')); ?>" type="text/javascript"></script>
 	<script src="<?php echo e(asset('/js/bootstrap.js')); ?>" type="text/javascript"></script>
@@ -45,11 +45,16 @@
 </head>
 <body>
 	<div class="container pageHead"> 
+	<!-- navigation bar code starts here -->
+	
+	
+	
+	<!-- navigation bar code ends here -->
 		<div class="logo"> <a href="<?php echo e(url("/")); ?>"><img src="<?php echo e(asset('images/logo.png')); ?>"></a>
 
 		<?php if(Auth::check()): ?>
-			<span style="margin-left:680px;font-size:16px;">Welcome <b><?php echo e(ucfirst(Auth::user()->name)); ?></b></span>
-			<a class="pull-right btn btn-default" href="<?php echo e(URL::to('auth/logout')); ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+			<span style="margin-left:680px;font-size:16px;display:inline;">Welcome <b><?php echo e(ucfirst(Auth::user()->name)); ?></b></span>
+			<a class="btn btn-default" href="<?php echo e(URL::to('auth/logout')); ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 		
 		<?php endif; ?>
 		

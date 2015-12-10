@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Ektimo</title>
-
+	<link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}" type="image/x-icon">
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<script src="{{asset('/js/2.1.3_jquery.min.js')}}" type="text/javascript"></script>
 	<script src="{{asset('/js/bootstrap.js')}}" type="text/javascript"></script>

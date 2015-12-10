@@ -28,7 +28,8 @@
 					<dd><a href="<?php echo e(URL::to('technician/download_files')); ?>?order=<?php echo e($job->order_id); ?>">Ektimo Flows Spreadsheet.xlsm</a></dd>
 					
 					<?php else: ?>
-						Job file not exist.
+						<?php /*Job file not exist.*/ ?>
+						<dd><a href="<?php echo e(URL::to('technician/download_files')); ?>?order=<?php echo e($job->order_id); ?>">Ektimo Flows Spreadsheet.xlsm</a></dd>
 					<?php endif; ?>
 					<dd>  <p> </p></dd>
 					
@@ -73,6 +74,16 @@
 						<dd>  <p> </p></dd>
 						<dt>Location Contact Name  & number</dt>
 						<dd><?php echo e($detail->contact); ?></dd>
+						<dd>  <p> </p></dd>
+						<dt>Laboratory Booking Time</dt>
+						<?php if(isset($job->lstart) && !empty($job->lstart)){ ?> 
+						<dd><?php echo e(date('d-m-Y',strtotime($job->lstart))); ?> <?php echo e(date("H:i", strtotime($job->lstart_time))); ?></dd>
+						<?php } ?>
+						<dd>  <p> </p></dd>
+						<dt>Reporting Booking Time</dt>
+						<?php if(isset($job->rstart) && !empty($job->rstart)){ ?> 
+						<dd><?php echo e(date('d-m-Y',strtotime($job->rstart))); ?> <?php echo e(date("H:i", strtotime($job->rstart_time))); ?></dd>
+						<?php } ?>
 						<?php /*<dt>Job test documents </dt>
 						<dd></dd>
 						<dt>Job lab documents</dt>

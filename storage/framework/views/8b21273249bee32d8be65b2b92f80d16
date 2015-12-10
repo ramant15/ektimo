@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			
+input.text { margin-bottom:12px; width:85%; padding: .4em; float: right !important;
+ }
+textarea.form-control {
+  height: 20%;
+  margin-bottom:12px;  padding: .4em; float: right
+}
+
+.arrow_box {
+	position: relative;
+	background: #F0F0F0;
+	border: 2px solid #758894;
+	border-radius: 8px;
+}
+.arrow_box:after, .arrow_box:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(240, 240, 240, 0);
+	border-bottom-color: #F0F0F0;
+	border-width: 5px;
+	margin-left: -5px;
+}
+.arrow_box:before {
+	border-color: rgba(117, 136, 148, 0);
+	border-bottom-color: #758894;
+	border-width: 8px;
+	margin-left: -8px;
+}
+#heading{
+       left: 27%;
+    position: relative;
+}
+</style>
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  
+  
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+   <script type="text/javascript" src="<?php echo e(asset('/js/jquery.ui.timepicker.js')); ?>"></script>
+   <link href="<?php echo e(asset('/css/jquery.ui.timepicker.css')); ?>" rel="stylesheet">
+   <link href="<?php echo e(asset('/css/fullcalendar.css')); ?>" rel="stylesheet">
+   <script type='text/javascript' src='http://54.79.23.80/public/work-schedule/external/dateformat.js'></script>
+  
+  <script>
+  /*function ajax(callback){
+	  var new_task= "";
+	  var token = document.getElementById('token').value
+	  $.ajax({
+    	  url: 'http://localhost:8000/get_schedule',
+    	  headers: {'X-CSRF-TOKEN': token},
+    	  type: 'POST',
+    	  dataType: 'json',
+    	  data: '1=1',
+    	  success: function(response) {
+    		  //console.log(JSON.stringify(response));
+    		  new_task= JSON.stringify(response);
+    		  callback(JSON.stringify(response));
+          }
+    	 });
+ 	 return new_task;
+  }*/
+  $(function() {
+	 
+	  $('#start_time').timepicker();
+	  $('#end_time').timepicker();
+	  $( "#start_date" ).datepicker({
+	        onSelect: function(selected) {
+	          $("#end_date").datepicker("option","minDate", selected)
+	        }
+	    });
+	    $( "#end_date" ).datepicker({
+	        onSelect: function(selected) {
+	           $("#start_date").datepicker("option","maxDate", selected)
+	        }
+	    });
+    	$('body').on('click', '#schedule', function(){
+    		var title=$("#title").val();
+        	if($.trim(title)=="")
+            {
+				$('#error').text('Please enter title .').show();
+				 $('#error').delay(2000).fadeOut();
+        	}
+         else 
+         {
+	    	var data = $('#form_data').serialize();
+	    	var route = 'http://localhost:8000/save_schedule_report';
+	    	var token = document.getElementById('token').value
+	
+	    	$.ajax({
+	    	  url: route,
+	    	  headers: {'X-CSRF-TOKEN': token},
+	    	  type: 'POST',
+	    	  dataType: 'json',
+	    	  data: data,
+	    	  beforeSend: function() {
+	    	       $('#loader').show();
+	    	       $('#schedule').prop('disabled', true);
+	    	    },
+	    	  success:function(data) {
+	    	    	 $('#loader').hide();
+	    	    	 $('#schedule').prop('disabled', false);
+	  	        var res= JSON.stringify(data);
+					$('#close_dialog').trigger( "click" );
+					$('#calendar').fullCalendar( 'refetchEvents' );
+					$('#form_data')[0].reset();
+	  	      }
+	    	 });
+         }
+    	});
+    	//$( "#dialog" ).dialog({ autoOpen: false });
+    	$("#dialog").dialog({
+	    title: "Add an event " ,
+	    autoOpen: false,
+	    width: 450, 
+	    height: 400
+	  
+	});
+    	$('body').on('click', '.fc-future', function(){
+    	  $( "#dialog" ).dialog( "open" );
+    	});
+    	$('body').on('click', '#close_dialog', function(){
+        	  $( "#dialog" ).dialog( "close" );
+        	});
+  });
+  $.getScript('http://arshaw.com/js/fullcalendar-1.6.4/fullcalendar/fullcalendar.min.js',function(){
+	  
+	  var date = new Date();
+	  var time = date.getHours() + ":" + date.getMinutes();
+	  var d = date.getDate();
+	  var m = date.getMonth() + 1;
+	  var y = date.getFullYear();
+	  var new_date = m+"/"+d+"/"+y;
+	  $('#start_date').val(new_date);
+	  $('#end_date').val(new_date);
+	  $('#start_time').val(time);
+	  $('#end_time').val(time);
+	  /*ajax(function(details){
+		   dates_data = details;
+		  console.log(details);
+	      //do whatever you want to do with details here
+	  });*/
+	  
+	  var token = document.getElementById('token').value;
+	  var order_id = document.getElementById('order_id').value;
+	  $('#calendar').fullCalendar({
+			 
+		    header: {
+		      left: 'prev,next today',
+		      center: 'title',
+		      right: 'month,agendaWeek,agendaDay'
+		    },
+		    editable: true,
+		    eventMouseover: function(calEvent, jsEvent) {
+		        var tooltip = '<div class="tooltipevent arrow_box" style="width:150px;height:100px;background:#F0F0F0 ;position:absolute;z-index:10001;"><strong>Title :</strong>' + calEvent.title + '</br><p></p><strong> Date :</strong>'+calEvent.start.format("m/dd/yy")+'</div>';
+		        $("body").append(tooltip);
+		        $(this).mouseover(function(e) {
+		            $(this).css('z-index', 10000);
+		            $('.tooltipevent').fadeIn('500');
+		            $('.tooltipevent').fadeTo('10', 1.9);
+		        }).mousemove(function(e) {
+		            $('.tooltipevent').css('top', e.pageY + 10);
+		            $('.tooltipevent').css('left', e.pageX + 20);
+		        });
+		    },
+
+		    eventMouseout: function(calEvent, jsEvent) {
+		        $(this).css('z-index', 8);
+		        $('.tooltipevent').remove();
+		    },
+		    dayClick: function(date, jsEvent, view) {
+
+		       var current_day = date.format("m/dd/yy");
+		       $('#start_date').val(current_day);
+		 	  $('#end_date').val(current_day);
+		        $( "#dialog" ).dialog( "open" );
+		    },
+		    events: {
+		        url: 'http://localhost:8000/get_schedule_report',
+		       headers: {'X-CSRF-TOKEN': token},
+		       data: {
+	               order_id: order_id,
+	           },
+		       	type: 'POST'
+		    }
+		  });
+		})
+	  </script>
+	</head>
+	<body >
+		<div class="container">
+		
+			<div class="content">
+				<div id="heading"><h1>Schedule for Reporting </div></h1>
+			<?php  $exp_val = explode("=", $id);?>
+				<div id="calendar"></div>
+				<div id="dialog" title="Dialog Title">
+				<div id="error" style="color:red;display:none;"></div>
+			
+ 				<form class="form-horizontal" method="POST" id="form_data" style="display:block;">
+					<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" id="token">
+					<input type="hidden" name="order_id" value="<?php echo $exp_val[1]; ?>" id="order_id">
+						  <div class="form-group">
+						    <label for="inputEmail3" class="col-sm-3 control-label">Title:</label>
+						    <div class="col-sm-9">
+						      <input type="text" class="form-control" id="title" placeholder="Title" name="title">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="inputPassword3" class="col-sm-3 control-label">Description:
+						</label>
+						    <div class="col-sm-9">
+						      <textarea class="form-control" rows="4" cols="30" id="description" name="description"></textarea>
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="inputPassword3" class="col-sm-3 control-label">Startdate:</label>
+						    <div class="col-sm-5">
+						      <input type="text" class="form-control" id="start_date" name="start_date" placeholder="Startdate">
+						    </div>
+						 <div class="col-sm-4">
+						      <input type="text" class="form-control" id="start_time" name="start_time" placeholder="start time">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="inputPassword3" class="col-sm-3 control-label">Enddate:
+						
+						</label>
+						    <div class="col-sm-5">
+						      <input type="text" placeholder="End date" id="end_date" name="end_date" class="form-control">
+						    </div><div class="col-sm-4">
+						      <input type="text" placeholder="End Time" id="end_time" name="end_time" class="form-control">
+						    </div>
+						  </div>
+						   <div style='position:relative;left: 40%;z-index: 5000;width:144px;display:none;' id="loader">
+						  <img src="<?php echo e(asset('/images/loader.gif')); ?>"></div>
+						  <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset">
+						<button type="button" id="schedule" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Save</span></button>
+						<button type="button" id="close_dialog" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Close</span></button>
+						</div></div>
+						</form>
+				  </div>
+			</div>
+		</div>
+	</body>
+</html>

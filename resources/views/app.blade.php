@@ -45,11 +45,16 @@
 </head>
 <body>
 	<div class="container pageHead"> 
+	<!-- navigation bar code starts here -->
+	
+	
+	
+	<!-- navigation bar code ends here -->
 		<div class="logo"> <a href="{{ url("/") }}"><img src="{{asset('images/logo.png')}}"></a>
 
 		@if (Auth::check())
-			<span style="margin-left:680px;font-size:16px;">Welcome <b>{{ucfirst(Auth::user()->name)}}</b></span>
-			<a class="pull-right btn btn-default" href="{{URL::to('auth/logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+			<span style="margin-left:680px;font-size:16px;display:inline;">Welcome <b>{{ucfirst(Auth::user()->name)}}</b></span>
+			<a class="btn btn-default" href="{{URL::to('auth/logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 		
 		@endif
 		

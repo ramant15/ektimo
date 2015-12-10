@@ -74,6 +74,16 @@
 						<dd>  <p> </p></dd>
 						<dt>Location Contact Name  & number</dt>
 						<dd>{{$detail->contact}}</dd>
+						<dd>  <p> </p></dd>
+						<dt>Laboratory Booking Time</dt>
+						<?php if(isset($job->lstart) && !empty($job->lstart)){ ?> 
+						<dd>{{date('d-m-Y',strtotime($job->lstart))}} {{date("H:i", strtotime($job->lstart_time))}}</dd>
+						<?php } ?>
+						<dd>  <p> </p></dd>
+						<dt>Reporting Booking Time</dt>
+						<?php if(isset($job->rstart) && !empty($job->rstart)){ ?> 
+						<dd>{{date('d-m-Y',strtotime($job->rstart))}} {{date("H:i", strtotime($job->rstart_time))}}</dd>
+						<?php } ?>
 						{{--<dt>Job test documents </dt>
 						<dd></dd>
 						<dt>Job lab documents</dt>

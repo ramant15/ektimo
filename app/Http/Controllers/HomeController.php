@@ -78,13 +78,20 @@ class HomeController extends Controller {
 		
 		foreach($orders as $progress){
 			if($progress['status'] == 1){ 
-				$tech1 = DB::table('work_schedule.events')->join('work_schedule.calendars', 'work_schedule.events.calendar_id', '=', 'work_schedule.calendars.calendar_id')->where('order_id','=',$progress['id'])->first();
+				$tech1 = DB::table('work_schedule.events')
+				->join('work_schedule.calendars', 'work_schedule.events.calendar_id', '=', 'work_schedule.calendars.calendar_id')
+				->leftjoin('raman.reporting_schedule', 'raman.reporting_schedule.order_id', '=', 'work_schedule.events.order_id')
+				->leftjoin('raman.laboratory_schedule', 'raman.laboratory_schedule.order_id', '=', 'work_schedule.events.order_id')
+				->where('work_schedule.events.order_id','=',$progress['id'])
+				->select('work_schedule.events.*','work_schedule.calendars.*','raman.reporting_schedule.start_date as rstart','raman.reporting_schedule.start_time as rstart_time','raman.laboratory_schedule.start_date as lstart','raman.laboratory_schedule.start_time as lstart_time')
+				->first();
 				//$tech = TechnicianSchedule::with('user')->where('order_id','=',$progress['id'])->first();
 				$technician[$progress['id']] = $tech1;
 				
 			}
 		}
-	
+		/*echo "<pre>";
+		print_r($technician);*/
 		return view('home')->with(compact('orders','technician','tech'));
 	}
 	
@@ -288,8 +295,13 @@ class HomeController extends Controller {
 		//$technicians = User::where('role_id','=',4)->where('status','=',1)->get();
 		//$tech_schedule = TechnicianSchedule::where('order_id','=',$id)->first();
 		
-		$tech = DB::table('work_schedule.events')->join('work_schedule.calendars', 'work_schedule.events.calendar_id', '=', 'work_schedule.calendars.calendar_id')->where('order_id','=',$id)->select('work_schedule.calendars.name')->first();
-		
+		$tech = DB::table('work_schedule.events')
+		->join('work_schedule.calendars', 'work_schedule.events.calendar_id', '=', 'work_schedule.calendars.calendar_id')
+		->leftjoin('raman.reporting_schedule', 'raman.reporting_schedule.order_id', '=', 'work_schedule.events.order_id')
+		->leftjoin('raman.laboratory_schedule', 'raman.laboratory_schedule.order_id', '=', 'work_schedule.events.order_id')
+		->where('work_schedule.events.order_id','=',$id)->select('work_schedule.calendars.name','raman.reporting_schedule.start_date as rstart','raman.reporting_schedule.start_time as rstart_time','raman.laboratory_schedule.start_date as lstart','raman.laboratory_schedule.start_time as lstart_time')->first();
+		/*echo "<pre>";
+		print_r($tech);die;*/
 		return view('order_review')->with(compact('order','tech'));
 		
 	}

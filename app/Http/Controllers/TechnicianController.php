@@ -77,9 +77,16 @@ class TechnicianController extends Controller {
 		  $user  = \Auth::user();   
         $userId = $user->id;   
 		if($id){
-			$job = DB::table('work_schedule.events')->join('work_schedule.calendars', 'work_schedule.events.calendar_id', '=', 'work_schedule.calendars.calendar_id')->where('work_schedule.events.order_id','=',$id)->first();
+			$job = DB::table('work_schedule.events')
+			->join('work_schedule.calendars', 'work_schedule.events.calendar_id', '=', 'work_schedule.calendars.calendar_id')
+			->leftjoin('raman.reporting_schedule', 'raman.reporting_schedule.order_id', '=', 'work_schedule.events.order_id')
+			->leftjoin('raman.laboratory_schedule', 'raman.laboratory_schedule.order_id', '=', 'work_schedule.events.order_id')
+			->where('work_schedule.events.order_id','=',$id)
+			->select('work_schedule.events.*','work_schedule.calendars.*','raman.reporting_schedule.start_date as rstart','raman.reporting_schedule.start_time as rstart_time','raman.laboratory_schedule.start_date as lstart','raman.laboratory_schedule.start_time as lstart_time')
+			->first();
 			$file_path = base_path().'/storage/excel/'.$id;
-			
+			/*echo "<pre>";
+			print_r($job);*/
 			if(File::exists($file_path)){
 				$job_file = 'exist';
 			}else{

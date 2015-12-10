@@ -12,6 +12,14 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('/schedule/{id}', 'ScheduleController@index');
+Route::post('/save_schedule', 'ScheduleController@save_schedule');
+Route::post('/get_schedule', 'ScheduleController@get_schedule');
+/*new route for getting reporting*/
+Route::get('/schedule_report/{id}', 'ScheduleController@schedule_report');
+Route::post('/save_schedule_report', 'ScheduleController@save_schedule_report');
+Route::post('/get_schedule_report', 'ScheduleController@get_schedule_report');
+/*closed here*/
 Route::post('home/complete-order', 'HomeController@complete_order');
 Route::get('home/edit-order/{id}', 'HomeController@edit_order');
 Route::post('home/update-order/{id}', 'HomeController@update_order');

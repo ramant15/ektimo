@@ -53,14 +53,43 @@
 						</div>
 						<div class="col-md-5">
 							<a class="calendar btn btn-default" data-fancybox-type="iframe" href="/work-schedule?order_id={{$order->id}}">Assign and Schedule Technician</a>
-							
-							<!--<input name="schedule" type="text" id="scheduling">-->
+							<?php 
+							if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+							    $ip = $_SERVER['HTTP_CLIENT_IP'];
+							} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+							    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+							} else {
+							    $ip = $_SERVER['REMOTE_ADDR'];
+							}
+							//if( $ip=="122.180.85.170" || $ip="127.0.0.1" || $ip="122.173.2.215"){
+							?>
+							<p></p>
+							<p><a class="calendar btn btn-default" data-fancybox-type="iframe" href="{{url('/schedule/id=')}}{{$order->id}}">Book for laboratory</a></p>
+							<p></p>
+							<p><a class="calendar btn btn-default" data-fancybox-type="iframe" href="{{url('/schedule_report/id=')}}{{$order->id}}">Book for reporting</a></p>
+							<!--<input name="schedule" type="text" id="scheduling">--><?php //}?>
 							<br>
 						<?php 
 						$detail = Request::input('detail'); 
 						
 						if($detail == 'true'){ ?>
 							<p class="tech">Assigned Technician: <span><b>{{$tech->name}}</b></span></p>
+							<p> </p>
+							
+							<p class="tech">Laboratory Schedule:
+							<?php 
+							if(isset($tech->lstart) && !empty($tech->lstart)){ 
+							?> 
+							<span><b>{{ date('d/m/y',strtotime($tech->lstart))}} {{date("H:i", strtotime($tech->lstart_time))}}</b></span>
+							<?php } ?>
+							</p>
+							<p> </p>
+							<p class="tech">Reporting Schedule: 
+							<?php  if(isset($tech->rstart) && !empty($tech->rstart)){  ?>
+							<span><b>{{date('d/m/y',strtotime($tech->rstart))}} {{date("H:i", strtotime($tech->rstart_time))}}</b></span>
+							<?php } ?>
+							</p>
+							
 						<?php } ?>
 						</div>
 						

@@ -61,7 +61,8 @@
 						<th>Customer</th>
 						<th>Site Name</th>
 						<th>Field Tech</th>
-						<th>Scheduled</th>
+						<th>Laboratory</th>
+						<th>Reporting</th>
 						<th>Comments</th>
 						<th>Action</th>
 					</tr>
@@ -106,10 +107,19 @@
 						<td>@if(isset($technician[$value->id]))
 							{{ $technician[$value->id]->name}} 
 						@endif
+						<p>{{ date('d/m/Y',strtotime($technician[$value->id]->date_start))}} {{ date("H:i", strtotime($technician[$value->id]->time_start))}} to {{date("H:i", strtotime($technician[$value->id]->time_end))}}</p>
 						</td>
-						<td>@if(isset($technician[$value->id]))
+						{{--<td>@if(isset($technician[$value->id]))
 							{{ $technician[$value->id]->date_start}} {{ $technician[$value->id]->time_start}} - {{ $technician[$value->id]->date_end}} {{$technician[$value->id]->time_end}}
-						@endif</td>
+						@endif</td>--}}
+						<td><?php 
+							if(isset($technician[$value->id]->lstart) && !empty($technician[$value->id]->lstart)){ ?> 
+							{{ date('d/m/y',strtotime($technician[$value->id]->lstart))}} {{date("H:i", strtotime($technician[$value->id]->lstart_time))}}
+							<?php } ?>
+						</td>
+						<td><?php  if(isset($technician[$value->id]->rstart) && !empty($technician[$value->id]->rstart)){  ?>
+							{{date('d/m/y',strtotime($technician[$value->id]->rstart))}} {{date("H:i", strtotime($technician[$value->id]->rstart_time))}}
+							<?php } ?></td>
 						<td>@if(isset($technician[$value->id]))
 							{{ $technician[$value->id]->description }}
 						@endif</td>

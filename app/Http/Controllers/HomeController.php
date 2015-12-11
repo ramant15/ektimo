@@ -12,6 +12,7 @@ use App\TechnicianSchedule;
 use Excel;
 use Session;
 use Mail;
+use Response;
 
 class HomeController extends Controller {
 
@@ -35,13 +36,18 @@ class HomeController extends Controller {
 	{
 		$this->middleware('auth');
 		$user  = \Auth::user();
+		if (!\Auth::check())
+		{
+		  Redirect::to('auth/login')->send();
+		}else{
+		
 		if (!$user->hasRole('client manager') && $user->hasRole('field technician')){
 			Redirect::to('technician/jobs')->send();
 		} else if($user->role_id=="5"){
 			Redirect::to('order')->send();
 		}
 		
-		
+		}
 	}
 	
 
@@ -291,6 +297,16 @@ class HomeController extends Controller {
 	}
 	
 	function order_reveiw($id){
+		if (!is_numeric($id)){
+			 return Response::view('errors.404', array(), 404);
+		}
+	$result = DB::table('orders')
+						    ->where('id', '=', $id)
+						    ->first();
+	
+		if (is_null($result)) {
+		 return Response::view('errors.404', array(), 404);
+		}
 		$order = Order::with(array('customer','site'))->where('orders.id','=',$id)->first();
 		//$technicians = User::where('role_id','=',4)->where('status','=',1)->get();
 		//$tech_schedule = TechnicianSchedule::where('order_id','=',$id)->first();

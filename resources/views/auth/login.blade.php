@@ -9,7 +9,7 @@
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+							<strong>Whoops!</strong>Invalid login credentials,please check you username or password.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>
@@ -18,20 +18,20 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
+					<form class="form-horizontal" method="POST" action="{{ url('/auth/login') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
+							<label class="col-md-4 control-label" for="name">Username<span style="color:red;">*</span></label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
+								<input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="Username">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
+							<label class="col-md-4 control-label" for="password">Password<span style="color:red;">*</span></label>
 							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
+								<input type="password" class="form-control" name="password" id="password" placeholder="Password">
 							</div>
 						</div>
 
@@ -57,9 +57,5 @@
 		</div>
 	</div>
 </div>
-<style>
-.login{
-	margin-top:20px;
-}
-</style>
+
 @endsection

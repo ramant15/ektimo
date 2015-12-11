@@ -37,9 +37,9 @@
 						<td>
 						<!--<a class="btn btn-primary" href="{{URL::to('home/edit-order')}}/{{$value->id}}" role="button"><i class="glyphicon glyphicon-edit"></i> Edit </a> -->
 						@if($value->status == 0) 
-							<a class="btn btn-primary" href="{{URL::to('home/order-reveiw')}}/{{$value->id}}" role="button"><i class="glyphicon glyphicon-edit"></i> Review </a>
+							<a class="btn btn-primary pull-right" href="{{URL::to('home/order-reveiw')}}/{{$value->id}}" role="button"><i class="glyphicon glyphicon-eye-open"></i> Review </a>
 						@elseif($value->status == 1) 
-							<a class="btn btn-primary review" href="javascript:void(0)" role="button"><i class="glyphicon glyphicon-edit"></i>Review </a>
+							<a class="btn btn-primary review pull-right" href="javascript:void(0)" role="button"><i class="glyphicon glyphicon-eye-open"></i>Review </a>
 						
 						@endif
 						</td>
@@ -123,7 +123,7 @@
 						<td>@if(isset($technician[$value->id]))
 							{{ $technician[$value->id]->description }}
 						@endif</td>
-						<td><a class="btn btn-primary" href="{{URL::to('home/order-reveiw')}}/{{$value->id}}?detail=true" role="button"><i class="glyphicon glyphicon-edit"></i> Detail </a></td>
+						<td><a class="btn btn-primary" href="{{URL::to('home/order-reveiw')}}/{{$value->id}}?detail=true" role="button"><i class="glyphicon glyphicon-info-sign"></i> Detail </a></td>
 					</tr>
 					@endif
 				@endforeach

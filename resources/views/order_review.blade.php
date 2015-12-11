@@ -81,12 +81,16 @@
 							if(isset($tech->lstart) && !empty($tech->lstart)){ 
 							?> 
 							<span><b>{{ date('d/m/y',strtotime($tech->lstart))}} {{date("H:i", strtotime($tech->lstart_time))}}</b></span>
+							<?php }else { ?>
+							<span><b>N/A</b></span>
 							<?php } ?>
 							</p>
 							<p> </p>
 							<p class="tech">Reporting Schedule: 
 							<?php  if(isset($tech->rstart) && !empty($tech->rstart)){  ?>
 							<span><b>{{date('d/m/y',strtotime($tech->rstart))}} {{date("H:i", strtotime($tech->rstart_time))}}</b></span>
+							<?php }else{ ?>
+								<span><b>N/A</b></span>
 							<?php } ?>
 							</p>
 							
@@ -128,9 +132,9 @@
 						<input type="hidden" name="edit" value="true">
 						<a id="update"  class="btn btn-primary pull-right" href="#" role="button"><i class="glyphicon glyphicon-edit"></i> Update </a>&nbsp;
 					<?php }else{ ?>
-						<a id="approve"  class="btn btn-primary pull-right" href="#" role="button"><i class="glyphicon glyphicon-edit"></i> Approve </a>&nbsp;
+						<a id="approve"  class="btn btn-primary pull-right" href="#" role="button"><i class="glyphicon glyphicon-ok"></i> Approve </a>&nbsp;
 					<?php } ?>
-					<a class="btn btn-primary pull-right" href="javascript:void()" onclick="cancelOrder({{$order->id}})" role="button"><i class="glyphicon glyphicon-edit"></i>Cancel</a>
+					<a class="btn btn-danger pull-right" href="javascript:void()"  role="button" data-toggle="modal" data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>Cancel</a>
 					</div>
 				</div>
 			</div>
@@ -138,6 +142,21 @@
 		</div>
 	</div>
 </div>
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+               <p>Are you sure to delete order from list?</p>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok" onclick="cancelOrder({{$order->id}})">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
 
 .btn {
@@ -152,6 +171,12 @@
 }
 .tech span{
 	color:green;
+}
+.modal-backdrop.in {
+	opacity: 0;
+}
+.modal-backdrop{
+z-index:0;
 }
 </style>
 <script>
@@ -247,11 +272,14 @@ $(".calendar").fancybox({
 
 });
 function cancelOrder(order_id) {
-    if (confirm("Are you sure to delete order from list?")) {
+   // if (confirm("Are you sure to delete order from list?")) {
 		window.location.href = "/home/cancel-order/"+order_id;
-    }
-    return false;
+  //  }
+   // return false;
 }
+$('#confirm-delete').on('show.bs.modal', function(e) {
+    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+});
 </script>
 
 @endsection

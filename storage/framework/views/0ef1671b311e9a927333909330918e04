@@ -36,9 +36,9 @@
 						<td>
 						<!--<a class="btn btn-primary" href="<?php echo e(URL::to('home/edit-order')); ?>/<?php echo e($value->id); ?>" role="button"><i class="glyphicon glyphicon-edit"></i> Edit </a> -->
 						<?php if($value->status == 0): ?> 
-							<a class="btn btn-primary" href="<?php echo e(URL::to('home/order-reveiw')); ?>/<?php echo e($value->id); ?>" role="button"><i class="glyphicon glyphicon-edit"></i> Review </a>
+							<a class="btn btn-primary pull-right" href="<?php echo e(URL::to('home/order-reveiw')); ?>/<?php echo e($value->id); ?>" role="button"><i class="glyphicon glyphicon-eye-open"></i> Review </a>
 						<?php elseif($value->status == 1): ?> 
-							<a class="btn btn-primary review" href="javascript:void(0)" role="button"><i class="glyphicon glyphicon-edit"></i>Review </a>
+							<a class="btn btn-primary review pull-right" href="javascript:void(0)" role="button"><i class="glyphicon glyphicon-eye-open"></i>Review </a>
 						
 						<?php endif; ?>
 						</td>
@@ -128,7 +128,7 @@
 							<?php echo e($technician[$value->id]->description); ?>
 
 						<?php endif; ?></td>
-						<td><a class="btn btn-primary" href="<?php echo e(URL::to('home/order-reveiw')); ?>/<?php echo e($value->id); ?>?detail=true" role="button"><i class="glyphicon glyphicon-edit"></i> Detail </a></td>
+						<td><a class="btn btn-primary" href="<?php echo e(URL::to('home/order-reveiw')); ?>/<?php echo e($value->id); ?>?detail=true" role="button"><i class="glyphicon glyphicon-info-sign"></i> Detail </a></td>
 					</tr>
 					<?php endif; ?>
 				<?php endforeach; ?>

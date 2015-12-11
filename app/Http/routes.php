@@ -15,6 +15,7 @@ Route::get('/', 'WelcomeController@index');
 Route::get('/schedule/{id}', 'ScheduleController@index');
 Route::post('/save_schedule', 'ScheduleController@save_schedule');
 Route::post('/get_schedule', 'ScheduleController@get_schedule');
+Route::post('/change_password', 'ResetPassController@change_password');
 /*new route for getting reporting*/
 Route::get('/schedule_report/{id}', 'ScheduleController@schedule_report');
 Route::post('/save_schedule_report', 'ScheduleController@save_schedule_report');
@@ -84,5 +85,7 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin','middleware' => 'App\H
 	
 });
  
- 
+Route::get('/change-password', function ()    {
+    return view('auth/change_password');
+});
 

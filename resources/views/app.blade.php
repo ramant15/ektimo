@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Ektimo</title>
 	<link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}" type="image/x-icon">
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 	<script src="{{asset('/js/2.1.3_jquery.min.js')}}" type="text/javascript"></script>
 	<script src="{{asset('/js/bootstrap.js')}}" type="text/javascript"></script>
 	<script src="{{asset('/js/angular.js') }}" type="text/javascript"></script> 
@@ -41,22 +41,43 @@
 		margin-top:50px;
 	}
 
+.login{
+	margin-top:20px;
+}
+ .navbar-header {
+    float: left;
+    margin-top: -28px;
+}
+.navbar-brand {
+    float: left;
+    font-size: 18px;
+    height: 93px;
+    line-height: 20px;
+    padding: 15px;
+}
 </style>
 </head>
 <body>
 	<div class="container pageHead"> 
 	<!-- navigation bar code starts here -->
 	
-	
-	
+	<div class="container-fluid">
+    <div class="navbar-header">
+    <a href="{{ url("/") }}" class="navbar-brand"><img src="{{asset('images/logo.png')}}" alt="logo"></a>
+    </div>
+    <div>
+      
+      <ul class="nav navbar-nav navbar-right">
+      @if (Auth::check())
+        <li><a href="#">Welcome <b>{{ucfirst(Auth::user()->name)}}</b></a></li>
+        <li><a href="{{URL::to('change-password')}}"><span class="glyphicon glyphicon-user"></span> Edit My Profile</a></li>
+        <li><a href="{{URL::to('auth/logout')}}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        @endif
+      </ul>
+    </div>
+  </div>
 	<!-- navigation bar code ends here -->
-		<div class="logo"> <a href="{{ url("/") }}"><img src="{{asset('images/logo.png')}}"></a>
-
-		@if (Auth::check())
-			<span style="margin-left:680px;font-size:16px;display:inline;">Welcome <b>{{ucfirst(Auth::user()->name)}}</b></span>
-			<a class="btn btn-default" href="{{URL::to('auth/logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 		
-		@endif
 		
 		@if ( Session::has('flash_message') )
 			<div class="alert {{ Session::get('flash_type') }}">
@@ -65,7 +86,6 @@
 			@endif
 		@yield('content')
 	</div> 
-
 <script>
 	$('#confirm-delete').on('show.bs.modal', function(e) {
 		var form = $(e.relatedTarget).data('href');

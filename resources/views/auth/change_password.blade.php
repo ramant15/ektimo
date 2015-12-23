@@ -52,7 +52,7 @@
 						  <div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 							<button type="submit" class="btn btn-success">Update</button>
-							<button type="button" class="btn btn-danger">Cancel</button>
+							<button type="button" class="btn btn-danger" id="back">Cancel</button>
 							</div>
 						  </div>
 						</form>
@@ -61,4 +61,12 @@
 		</div>
 	</div>
 </div>
+<script>
+$(document).ready(function(){
+	$('#back').click(function(){
+		parent.history.back();
+		return false;
+	});
+});
+</script>
 @endsection

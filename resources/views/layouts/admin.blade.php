@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>Ektimo</title>
+	<link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}" type="image/x-icon">
 
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -64,7 +65,7 @@
                             <a href="<?php echo url(); ?>/admin/home"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i>Management<span class="fa arrow"></span></a>
+                            <a href="#" style="cursor:default"><i class="fa fa-files-o fa-fw"></i>Management</a>
                             <ul class="nav nav-second-level">   
 								<li>
                                     <a href="<?php echo url(); ?>/admin/users">Add User</a>

@@ -94,7 +94,15 @@
 							<?php } ?>
 							</p>
 							
-						<?php } ?>
+						<?php } 
+							$query_string = Request::input('detail'); 
+							if(isset($query_string) && $query_string != 'true'){ ?>
+								<script type="text/javascript">
+								    window.location = "{{ url::to('/errors.404') }}";
+								</script>				
+							<?php  
+							}
+						?>
 						</div>
 						
 					</div>
@@ -119,9 +127,11 @@
 							<td>@{{item.location_name}}</td>
 							<td >@{{item.location_type}}</td>
 							<td >@{{item.method}}</td>
-							<td style="width:10%"><input type="text" class="form-control"  id = "qty_@{{ item.test_id}}" name="quantity[@{{item.id}}]" value="@{{item.quantity}}"/></td>
-							<td style="width:10%" ><input type="text" class="form-control"  id = "price_@{{ item.test_id}}" name="price[@{{item.id}}]" value="@{{item.price}}"/></td>
+							<td style="width:10%;height:25px;"><input type="text" class="form-control" style="height:25px;" id = "qty_@{{ item.test_id}}" name="quantity[@{{item.id}}]" value="@{{item.quantity}}"/></td>
+							<td style="width:10%" id = "price_@{{ item.test_id}}"><i class="glyphicon glyphicon-usd"></i> @{{item.price}}</td>
 							<input type="hidden" name="detail_id" value="@{{item.id}}">
+							<input type="hidden" class="form-control" id = "hidden_price_@{{ item.test_id}}"  name="price[@{{item.id}}]" value="@{{item.price}}"/>
+							<input type="hidden" value="@{{ item.price}}" id="baseprice_@{{ item.test_id}}" />
 						</tr>
 						
 					</tbody>
@@ -134,7 +144,7 @@
 					<?php }else{ ?>
 						<a id="approve"  class="btn btn-primary pull-right" href="#" role="button"><i class="glyphicon glyphicon-ok"></i> Approve </a>&nbsp;
 					<?php } ?>
-					<a class="btn btn-danger pull-right" href="javascript:void()"  role="button" data-toggle="modal" data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>Cancel</a>
+					<a class="btn btn-danger pull-right" href="javascript:void()"  role="button" data-toggle="modal" data-target="#confirm-delete"><i class="glyphicon glyphicon-remove"></i>  Cancel</a>
 					</div>
 				</div>
 			</div>
@@ -177,6 +187,9 @@
 }
 .modal-backdrop{
 z-index:0;
+}
+.container.ng-scope {
+    padding-top: 42px;
 }
 </style>
 <script>
@@ -280,6 +293,23 @@ function cancelOrder(order_id) {
 $('#confirm-delete').on('show.bs.modal', function(e) {
     $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 });
+$(function() {
+$(document).on("keyup", "input[name^='quantity']" , function() {	
+	var qtyData = $(this).attr('id');
+	var row = qtyData.split('_');
+	var id = row[1];
+	var qty = $(this).val();
+	if(qty==0){
+			alert('Quantity for order cannot be 0');
+			$(this).val(1);
+			return false;
+			}
+	var basePrice = $('#baseprice_'+id).val();
+	var calPrice = eval(qty*basePrice);
+	$('#price_'+id).empty().html('<i class="glyphicon glyphicon-usd"></i>'+calPrice.toFixed(2) );
+	$('#hidden_price_'+id).empty().val(calPrice.toFixed(2) );
+	});	
+});	
 </script>
 
 @endsection

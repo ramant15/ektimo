@@ -104,36 +104,15 @@ class TechnicianController extends Controller {
 			foreach($detail['details'] as $item){
 				  $test_id = $item['test_id'];
 				  //$path = public_path().'/TestFiles/'.$test_id;
-				  $main_path = public_path().'/TestFiles/'.$userId."/".$id;
-				  $half_path = public_path().'/TestFiles/'.$userId;
+				  $path = public_path().'/TestFiles/'.$id;
 				}
-				if(File::exists($half_path)){
-				/*$uploaded_file = \Input::File('test_files');
-				print_r($uploaded_file);
-					if($uploaded_file){echo "file_found";
-						echo $fileName = $uploaded_file->getClientOriginalName();
-						$uploaded_file->move($path, $fileName);
-						// read uploaded file //
-						/*Excel::load($path.'/'.$fileName, function($reader) {
-							// Getting all results
-							$results = $reader->toArray();
-								
-						});
-							*/
-						if(File::exists($main_path)){
-						
-						} else {
-						 File::makeDirectory($main_path, 0775, true, true);
-						}
+				if(File::exists($path)){
 					} else {
-					 File::makeDirectory($half_path, 0775, true, true);
-					 File::makeDirectory($main_path, 0775, true, true);
+					 File::makeDirectory($path, 0775, true, true);
 					}
 					
-					//Session::flash('flash_type', 'alert-success');	
-					//Session::flash('flash_message', 'File uploaded successfully.');
 				
-					$files = File::allFiles($main_path);
+					$files = File::allFiles($path);
 					if(!empty($files)){
 						foreach($files as $file){
 							$documents[] = array(
@@ -173,27 +152,24 @@ class TechnicianController extends Controller {
 			foreach($detail['details'] as $item){
 				  $test_id = $item['test_id'];
 				   // $path = public_path().'/TestFiles/'.$userId."/".$id;
-				 $main_path = public_path().'/TestFiles/'.$userId."/".$id;
-				  $half_path = public_path().'/TestFiles/'.$userId;
+				   $path = public_path().'/TestFiles/'.$id;
 				  
-				if(File::exists($main_path)){
+				if(File::exists($path)){
 				$uploaded_file = \Input::File('test_files');
 				
 					if($uploaded_file){
 						 $fileName = $uploaded_file->getClientOriginalName();
-						$uploaded_file->move($main_path, $fileName);
+						$uploaded_file->move($path, $fileName);
 						// read uploaded file //
-						Excel::load($main_path.'/'.$fileName, function($reader) {
+						Excel::load($path.'/'.$fileName, function($reader) {
 							// Getting all results
 							$results = $reader->toArray();
 								
 						});
 						
 					}
-					//Session::flash('flash_type', 'alert-success');	
-					//Session::flash('flash_message', 'File uploaded successfully.');
 				
-					$files = File::allFiles($main_path);
+					$files = File::allFiles($path);
 					if(!empty($files)){
 						foreach($files as $file){
 							$documents[] = array(
@@ -208,6 +184,15 @@ class TechnicianController extends Controller {
 			
 		return view('technician/job_detail')->with(compact('job','detail','documents','job_file','test_material'));
 			
+	}
+	
+	public function job_submit($id){
+		  $user  = \Auth::user();   
+        $userId = $user->id; 
+        DB::table('work_schedule.events')
+            ->where('work_schedule.events.order_id', $id)
+            ->update(['status' => '1']);
+            return redirect('technician/jobs');
 	}
 	
 	public function download_files(){

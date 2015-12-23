@@ -44,6 +44,11 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label">Choose items</label>
 						<div class="col-md-8">
+							<div class="col-md-4">
+								<input type="checkbox" id="checkAll"/><span><strong>Select All Items</strong></span>
+							</div>
+						</div>
+						<div class="col-md-8">
 						<table class="table table-bordered">
 							<tr>
 								<th></th>
@@ -100,6 +105,9 @@
 		if(selected_test){
 			$('#test').val(selected_test).attr('selected','selected');
 		}
+		$("#checkAll").change(function () {
+		    $("input:checkbox").prop('checked', $(this).prop("checked"));
+		});
 	});
   </script>
 @endsection

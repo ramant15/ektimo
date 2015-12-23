@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <div class="row">
-	<div class="col-md-10 col-md-offset-1">
+	<!-- <div class="col-md-10 col-md-offset-1"> -->
 		<div class="panel panel-default">
 			<div class="panel-heading">
 			 <strong> Update user </strong>
@@ -29,6 +29,13 @@
 						</div>
 					</div>
 
+						<div class="form-group">
+						<label class="col-md-4 control-label">Username <span style="color:red;">*</span></label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="username" value="{{ $user->username }}" readonly>
+						</div>
+					</div>
+					
 					<div class="form-group">
 						<label class="col-md-4 control-label">E-Mail Address</label>
 						<div class="col-md-6">
@@ -57,6 +64,7 @@
 							<option value="client manager" {{$user->type == 'client manager'?'selected':''}} > Client manager</option>
 							<option value="field technician" {{$user->type == 'field technician'?'selected':''}} >Technician</option>
 							<option value="operation_manager" {{$user->type == 'operation_manager'?'selected':''}} >Operation manager</option>
+							<option value="laboratory" {{$user->type == 'laboratory'?'selected':''}} >Laboratory manager</option>
 							</select>
 						</div>
 					</div>
@@ -81,6 +89,6 @@
 				</form>
 			</div>
 		</div>
-	</div>
+	<!-- </div> -->
 </div>
 @endsection

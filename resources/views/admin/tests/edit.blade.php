@@ -44,6 +44,11 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label">Choose items</label>
 						<div class="col-md-8">
+							<div class="col-md-4">
+								<input type="checkbox" id="checkAll"/><span><strong>Select All Items</strong></span>
+							</div>
+						</div>
+						<div class="col-md-8">
 						<table class="table table-bordered">
 							<tr>
 								<th></th>
@@ -65,7 +70,7 @@
 								<td><input type="checkbox" value="{{$value->id}}" name="test_item[{{$value->id}}]" <?php echo $checked; ?> /></td>
 								<td>{{$value->name}}</td>
 								<td>@if($value->image)
-										<img style="height:200px;width:200px;"src="{{ URL::to('/') }}/public/ItemImages/{{$value->image}}">
+										<img style="height:135px;width:150px;"src="{{ URL::to('/') }}/public/ItemImages/{{$value->image}}">
 									@endif
 								</td>
 							</tr>			
@@ -123,6 +128,9 @@
 		if(selected_test){
 			$('#test').val(selected_test).attr('selected','selected');
 		}
+		$("#checkAll").change(function () {
+		    $("input:checkbox").prop('checked', $(this).prop("checked"));
+		});
 	});
   </script>
 @endsection

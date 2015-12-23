@@ -10,12 +10,12 @@ class Customer  extends Model {
 	protected $fillable = ['contact_name','company_name','address','telephone_number','mobile_number','email_address'];
 	
 	public static $rules = array(	
-		'contact_name'              => 'required',
+		'contact_name'              => 'required|regex:/^[\pL\s\-]+$/u',
         'company_name'            	=> 'required',                 
         'address'            		=> 'required',
         'telephone_number'         	=> 'required|Numeric',
 		'mobile_number'         	=> 'required|Numeric',
-		'email_address'         	=> 'required|Email'       
+		'email_address'         	=> 'required|Email|unique:customers,email_address'       
     );
 	
 	 

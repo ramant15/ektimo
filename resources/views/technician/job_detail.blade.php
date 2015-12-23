@@ -1,5 +1,17 @@
 @extends('app')
 @section('content')
+<script>
+$(document).ready(function(){
+
+	  $('#upload_button').attr('disabled',true);
+	        $('#testFile').change(function(){
+	                if ($(this).val()) {
+	                    $('#upload_button').attr('disabled',false);
+	                } 
+	            }
+	            );
+	    });
+</script>
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
@@ -38,7 +50,7 @@
 					<dd>  <p> </p></dd>
 					<span><strong>Upload Documents:</strong></span>
 					
-					<button class="btn btn-primary" type="submit">+ Upload</button>
+					<button class="btn btn-primary" type="submit" id="upload_button" >+ Upload</button>
 					</dd>
 					<dd>  <p> </p></dd>
 					<dd>  <p> </p></dd>
@@ -126,7 +138,15 @@
 					</div>
 					<dt>Job Description</dt>
 					<dd>{{$job->description}}</dd>
-					
+					</form>
+					<form class="form-horizontal" role="form" method="post" action="{{URL::to('technician/job_submit')}}/{{$job->order_id}}" enctype="multipart/form-data" id="testForm">
+					<input type="hidden" name="POST">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<?php 
+					$num_files= count($documents);
+					?>
+					<input type="hidden" name="file_added" value="{{ csrf_token() }}">
+					<button type="submit" class="btn btn-success pull-right">Success</button>
 					</form>
 				</div>
 			</div>

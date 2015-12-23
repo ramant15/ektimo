@@ -198,7 +198,7 @@ class OrderController extends Controller {
 			// More headers
 			$headers .= 'From: <ghostcoder15@gmail.com>' . "\r\n";
 			
-			$to = "deep@nascenture.com";
+			$to = "sahild@nascenture.com";
 			$subject = "Order Request";
 			mail($to,$subject,$allhtml,$headers);
 			

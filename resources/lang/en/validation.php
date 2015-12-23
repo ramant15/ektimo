@@ -89,6 +89,9 @@ return [
 		'attribute-name' => [
 			'rule-name' => 'custom-message',
 		],
+		'username' => [
+        'regex' => "Username must be 3-15 character's and only contain small letters and numbers",
+    ]
 	],
 
 	/*

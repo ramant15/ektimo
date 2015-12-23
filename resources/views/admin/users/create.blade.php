@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <div class="row">
-	<div class="col-md-10 col-md-offset-1">
+	<!-- <div class="col-md-10 col-md-offset-1"> -->
 		<div class="panel panel-default">
 			<div class="panel-heading">
 			 <strong> Create user </strong>
@@ -23,40 +23,48 @@
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 					<div class="form-group">
-						<label class="col-md-4 control-label">Name</label>
+						<label class="col-md-4 control-label" for="name">Name <span style="color:red;">*</span></label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" name="name" value="{{ old('name') }}">
+							<input type="text" class="form-control" name="name" value="{{ old('name') }}" id="name">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-md-4 control-label">E-Mail Address</label>
+						<label class="col-md-4 control-label" for="username">Username <span style="color:red;">*</span></label>
 						<div class="col-md-6">
-							<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+							<input type="text" class="form-control" name="username" value="{{ old('username') }}" id="username">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="email">E-Mail Address <span style="color:red;">*</span></label>
+						<div class="col-md-6">
+							<input type="email" class="form-control" name="email" value="{{ old('email') }}" id="email">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-md-4 control-label">Password</label>
+						<label class="col-md-4 control-label" for="password">Password <span style="color:red;">*</span></label>
 						<div class="col-md-6">
-							<input type="password" class="form-control" name="password">
+							<input type="password" class="form-control" name="password" id="password">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-md-4 control-label">Confirm Password</label>
+						<label class="col-md-4 control-label" for="password_confirmation">Confirm Password <span style="color:red;">*</span></label>
 						<div class="col-md-6">
-							<input type="password" class="form-control" name="password_confirmation">
+							<input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-4 control-label">Type</label>
+						<label class="col-md-4 control-label">Type <span style="color:red;">*</span></label>
 						<div class="col-md-6">
 							<select class="form-control" name="type">
 							<option>--Select type--</option>
 							<option value="client manager">Client manager</option>
 							<option value="field technician">Technician</option>
 							<option value="operation_manager">Operation manager</option>
+							<option value="laboratory">Laboratory manager</option>
 							</select>
 						</div>
 					</div>
@@ -74,13 +82,13 @@
 							<button type="submit" class="btn btn-primary">
 								Add
 							</button>
-							<a href="{{URL::to('admin/users')}}" class="btn btn-primary">Cancel</a>
+							<a href="{{URL::to('admin/users')}}" class="btn btn-danger">Cancel</a>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
-	</div>
+	<!-- </div> -->
 </div>
  
 @endsection

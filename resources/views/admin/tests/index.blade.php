@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 	<div class="row">
-		<a href="<?php echo url(); ?>/admin/tests/create" class="btn btn-primary pull-right">Add Test</a>
+		<a href="<?php echo url(); ?>/admin/tests/create" class="btn btn-success pull-right">Add Test</a>
 	</div>
 	<div class="row" style="padding-top:20px;">
 		<div class="">		
@@ -29,8 +29,8 @@
 						<td>{{ $value->method }}</td>
 						<td>{{ $value->test_method }}</td>
 						<td>
-						<a class="btn btn-primary" href="{{URL::to('admin/tests/process_items')}}/{{$value->id}}" role="button"><i class="glyphicon glyphicon-edit"></i> View Items </a> 
-						<a class="btn btn-primary" href="{{URL::to('admin/tests/')}}/{{$value->id}}/edit" role="button"><i class="glyphicon glyphicon-edit"></i> Edit </a> 
+						<a class="btn btn-info" href="{{URL::to('admin/tests/process_items')}}/{{$value->id}}" role="button"><span class="glyphicon glyphicon-eye-open"></span> View Items </a> 
+						<a class="btn btn-primary" href="{{URL::to('admin/tests/')}}/{{$value->id}}/edit" role="button"><span class="glyphicon glyphicon-edit"></span>&nbsp; Edit </a> 
 						&nbsp;
 						<form method="POST" action="{{URL::to('admin/tests')}}/{{$value->id}}" id="{{ $value->id }}" accept-charset="UTF-8">
 								

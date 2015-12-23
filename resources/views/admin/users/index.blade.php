@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-10 col-md-offset-1">
+	<!-- <div class="col-md-10 col-md-offset-1"> -->
 		 
 		<p class="text-right">
 			<a href="users/create" class="btn btn-success">Add New</a>
@@ -32,7 +32,7 @@
 						<td>{{ $i }}</td>
 						<td>{{ ucwords($value->name) }}</td>
 						<td>{{ $value->email }}</td>
-						<td>{{$value->type }}</td>
+						<td>{{ ucfirst($value->type) }}</td>
 						<td>
 						<form method="POST" action="{{URL::to('admin/users')}}/{{$value->id}}" id="{{ $value->id }}" accept-charset="UTF-8">
 								
@@ -55,7 +55,7 @@
 		
 		<?php echo $users->render(); ?>
 				
-	</div>
+	<!-- </div> -->
 </div>
  
  

@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <div class="row">
-		<a href="<?php echo url(); ?>/admin/process-items/create" class="btn btn-primary pull-right">Add Process Item</a>
+		<a href="<?php echo url(); ?>/admin/process-items/create" class="btn btn-success pull-right">Add Process Item</a>
 	</div>
 <div class="row" style="padding-top:20px;">	  
 		<div class="panel panel-default">
@@ -16,7 +16,7 @@
 						<th>ID</th>
 						<th>Item</th>
 						<th>Type</th>
-						<th>Action</th>
+						<th style="text-align:center;">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -31,11 +31,11 @@
 								
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<input type="hidden" name="_method" value="DELETE">
-							 
-					<a class="btn btn-primary" href="{{URL::to('admin/process-items')}}/{{$value->id}}/edit" role="button"><i class="glyphicon glyphicon-edit"></i> Edit </a> 
-							  
-				    <a class="btn btn-danger" data-href="{{$value->id}}" data-toggle="modal" data-target="#confirm-delete" href="#"> <i class="glyphicon glyphicon-trash"></i> Delete</a> 
-							 
+					<center>		 
+						<a class="btn btn-primary" href="{{URL::to('admin/process-items')}}/{{$value->id}}/edit" role="button"><i class="glyphicon glyphicon-edit"></i> Edit </a> 
+								  
+					    <a class="btn btn-danger" data-href="{{$value->id}}" data-toggle="modal" data-target="#confirm-delete" href="#"> <i class="glyphicon glyphicon-trash"></i> Delete</a> 
+					</center>		 
 					</form>	
 				</td>
 				</tr>

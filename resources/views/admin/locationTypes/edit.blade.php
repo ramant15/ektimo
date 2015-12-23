@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <div class="row">
-	<div class="col-md-10 col-md-offset-1">
+	<!-- <div class="col-md-10 col-md-offset-1"> -->
 		<div class="panel panel-default">
 			<div class="panel-heading">
 			 <strong> Update Location Type </strong>
@@ -25,7 +25,7 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label">Location Name</label>
 						<div class="col-md-6">
-							<input type="text" name="name" value="{{$item->name}}">
+							<input class="form-control" type="text" name="name" value="{{$item->name}}">
 						</div>
 						</div>
 					<div class="form-group">
@@ -33,12 +33,12 @@
 							<button type="submit" class="btn btn-primary">
 								Update
 							</button>
-							<a href="{{URL::to('admin/location-types')}}" class="btn btn-primary">Cancel</a>
+							<a href="{{URL::to('admin/location-types')}}" class="btn btn-danger">Cancel</a>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
-	</div>
+	<!-- </div> -->
 </div>
 @endsection

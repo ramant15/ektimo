@@ -39,18 +39,18 @@ class AuthController extends Controller {
 	{
 		
 		$this->validate($request, [
-		  'name' => 'required', 'password' => 'required',
+		  'username' => 'required', 'password' => 'required',
 		]);
 
-		$credentials = $request->only('name', 'password');
+		$credentials = $request->only('username', 'password');
 
 		if ($this->auth->attempt($credentials, $request->has('remember'))) {
 		  return redirect()->intended('home');
 		}
 		return redirect('auth/login')
-			->withInput($request->only('name', 'remember'))
+			->withInput($request->only('username', 'remember'))
 			->withErrors([
-			  'name' => 'Invalid credentials.',
+			  'username' => 'Invalid credentials.',
 		]);
 		return redirect()->back()->withInput();
 		

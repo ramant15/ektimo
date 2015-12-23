@@ -54,6 +54,12 @@ Route::get('technician/jobs', 'TechnicianController@jobs');
 Route::get('technician/download_files', 'TechnicianController@download_files');
 Route::get('technician/job_detail/{id}', 'TechnicianController@job_detail');
 Route::post('technician/job_detail/{id}', 'TechnicianController@job_upload');
+Route::post('technician/job_submit/{id}', 'TechnicianController@job_submit');
+
+Route::get('/lab/lab', 'LabController@index');
+Route::get('lab/lab_detail/{id}', 'LabController@lab_detail');
+Route::post('lab/lab_detail/{id}', 'LabController@lab_upload');
+Route::get('lab/download_files', 'LabController@download_files');
 
 Route::get('/work-schedule', function () {
 	include (public_path().'/work-schedule/index.php');
@@ -88,4 +94,10 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin','middleware' => 'App\H
 Route::get('/change-password', function ()    {
     return view('auth/change_password');
 });
+
+Route::get("/social", function(){
+   return View::make("social_share");
+});
+
+Route::get('/alexa', 'UrlInfoController@index');
 

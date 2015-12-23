@@ -69,7 +69,7 @@
       
       <ul class="nav navbar-nav navbar-right">
       @if (Auth::check())
-        <li><a href="#">Welcome <b>{{ucfirst(Auth::user()->name)}}</b></a></li>
+        <li><a href="#" style="cursor:default">Welcome <b>{{ucfirst(Auth::user()->name)}}</b></a></li>
         <li><a href="{{URL::to('change-password')}}"><span class="glyphicon glyphicon-user"></span> Edit My Profile</a></li>
         <li><a href="{{URL::to('auth/logout')}}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         @endif

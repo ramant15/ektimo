@@ -4,7 +4,7 @@
 
 <div class="row">
 	<div class="row">
-		<a href="<?php echo url(); ?>/admin/processes?test=<?php echo $test_id; ?>" class="btn btn-primary pull-right">Add Test Process</a>
+		<a href="<?php echo url(); ?>/admin/processes?test=<?php echo $test_id; ?>" class="btn btn-success pull-right">Add Test Process</a>
 	</div>
 	<div class="col-md-offset-1" style="padding-top:20px;">
 	
@@ -21,11 +21,12 @@
 						<legend class="scheduler-border"></legend>
 						<div class="form-group">
 							<div class="col-md-6 ">
+							<ul class="list-group">
 							@if($items)
 								@foreach($items as $key => $value)
-								{{$value->name}}
-								<br/>
+								<li class="list-group-item">{{$value->name}}</li>
 								@endforeach
+								</ul>
 							@else
 								<span>No Process Items Selected</span>
 							@endif

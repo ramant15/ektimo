@@ -24,7 +24,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="name">Username<span style="color:red;">*</span></label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="Username">
+								<input type="text" class="form-control" name="username" id="name" value="{{ old('name') }}" placeholder="Username">
 							</div>
 						</div>
 
@@ -47,7 +47,7 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Login</button>
+								<button type="submit" class="btn btn-primary" id="login_user">Login</button>
  
 							</div>
 						</div>
@@ -57,5 +57,10 @@
 		</div>
 	</div>
 </div>
-
+<script>
+$('#login_user').click(function(){
+	  $(this).attr('disabled', 'disabled');
+	    $(this).parents('form').submit()
+});
+</script>
 @endsection

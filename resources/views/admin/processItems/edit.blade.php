@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
 <div class="row">
-	<div class="col-md-10 col-md-offset-1">
+	<!-- <div class="col-md-10 col-md-offset-1"> -->
 		<div class="panel panel-default">
 			<div class="panel-heading">
 			 <strong> Update Process Item </strong>
@@ -25,7 +25,7 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label">Name</label>
 						<div class="col-md-6">
-							<input type="text" name="name" value="{{$item->name}}">
+							<input class="form-control" type="text" name="name" value="{{$item->name}}">
 						</div>
 					</div>
 					<div class="form-group">
@@ -33,13 +33,13 @@
 						<div class="col-md-6">
 						<img style="height:200px;width:200px;"src="{{ URL::to('/') }}/public/ItemImages/{{$item->image}}">
 						<br/><br/>
-							<input type="file" id="itemImage" name="image" value="">
+							<input class="form-control" type="file" id="itemImage" name="image" value="">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-4 control-label">Item Type</label>
 						<div class="col-md-6">
-							<select name="type">
+							<select name="type" class="form-control" >
 								<option value="">--Select Type---</option>
 								<option value="equipment" {{$item->type == 'equipment'? 'selected':''}} > Equipment</option>
 								<option value="consumable" {{$item->type == "consumable" ? 'selected' :''}} >Consumable</option>
@@ -51,12 +51,12 @@
 							<button type="submit" class="btn btn-primary">
 								Update
 							</button>
-							<a href="{{URL::to('admin/process-items')}}" class="btn btn-primary">Cancel</a>
+							<a href="{{URL::to('admin/process-items')}}" class="btn btn-danger">Cancel</a>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
-	</div>
+	<!-- </div> -->
 </div>
 @endsection

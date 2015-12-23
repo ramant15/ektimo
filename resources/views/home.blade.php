@@ -23,9 +23,9 @@
 				@if($value->status ==0)
 					<tr>
 						<td>#{{ $value->id }}</td>
-						<td>{{ $value->customer['contact_name']}}</td>
-						<td>{{ $value->site['name']}}</td>
-						<td>0.00</td>
+						<td>{{ ucfirst($value->customer['contact_name'])}}</td>
+						<td>{{ ucfirst($value->site['name'])}}</td>
+						<td>{{ $value->total }}</td>
 						<td>
 						@if($value->status)
 							<span class="bg-success">Approved</span>
@@ -78,17 +78,17 @@
 						
 						<tr>
 						<td>#{{ $value->id }}</td>
-						<td>{{ $value->contact_name }}</td>
-						<td>{{ $value->site_name }}</td>
+						<td>{{ ucfirst($value->contact_name) }}</td>
+						<td>{{ ucfirst($value->site_name) }}</td>
 						<td>@if(isset( $value->field_tech))
-							{{ $value->field_tech}} 
+							{{ ucfirst($value->field_tech)}} 
 						@endif
 						</td>
 						<td>@if(isset( $value->event_id ))
 							{{ $value->date_start}} {{ $value->time_start}} - {{ $value->date_end }} {{ $value->time_end}}
 						@endif</td>
 						<td>@if(isset($value->event_id ))
-							{{ $value->description }}
+							{{ ucfirst($value->description) }}
 						@endif</td>
 						<td> </td>
 					</tr>
@@ -102,10 +102,10 @@
 					@if($value->status == 1)
 						<tr>
 						<td>#{{ $value->id }}</td>
-						<td>{{ $value->customer['contact_name']}}</td>
-						<td>{{ $value->site['name']}}</td>
+						<td>{{ ucfirst($value->customer['contact_name'])}}</td>
+						<td>{{ ucfirst($value->site['name'])}}</td>
 						<td>@if(isset($technician[$value->id]))
-							{{ $technician[$value->id]->name}} 
+							{{ ucfirst($technician[$value->id]->name)}} 
 						@endif
 						<p>{{ date('d/m/Y',strtotime($technician[$value->id]->date_start))}} {{ date("H:i", strtotime($technician[$value->id]->time_start))}} to {{date("H:i", strtotime($technician[$value->id]->time_end))}}</p>
 						</td>
@@ -115,11 +115,11 @@
 						<td><?php 
 							if(isset($technician[$value->id]->lstart) && !empty($technician[$value->id]->lstart)){ ?> 
 							{{ date('d/m/y',strtotime($technician[$value->id]->lstart))}} {{date("H:i", strtotime($technician[$value->id]->lstart_time))}}
-							<?php } ?>
+							<?php }else { echo "N/A";} ?>
 						</td>
 						<td><?php  if(isset($technician[$value->id]->rstart) && !empty($technician[$value->id]->rstart)){  ?>
 							{{date('d/m/y',strtotime($technician[$value->id]->rstart))}} {{date("H:i", strtotime($technician[$value->id]->rstart_time))}}
-							<?php } ?></td>
+							<?php }else { echo "N/A";}  ?></td>
 						<td>@if(isset($technician[$value->id]))
 							{{ $technician[$value->id]->description }}
 						@endif</td>

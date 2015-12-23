@@ -22,9 +22,9 @@
 				<?php if($value->status ==0): ?>
 					<tr>
 						<td>#<?php echo e($value->id); ?></td>
-						<td><?php echo e($value->customer['contact_name']); ?></td>
-						<td><?php echo e($value->site['name']); ?></td>
-						<td>0.00</td>
+						<td><?php echo e(ucfirst($value->customer['contact_name'])); ?></td>
+						<td><?php echo e(ucfirst($value->site['name'])); ?></td>
+						<td><?php echo e($value->total); ?></td>
 						<td>
 						<?php if($value->status): ?>
 							<span class="bg-success">Approved</span>
@@ -77,10 +77,10 @@
 						
 						<tr>
 						<td>#<?php echo e($value->id); ?></td>
-						<td><?php echo e($value->contact_name); ?></td>
-						<td><?php echo e($value->site_name); ?></td>
+						<td><?php echo e(ucfirst($value->contact_name)); ?></td>
+						<td><?php echo e(ucfirst($value->site_name)); ?></td>
 						<td><?php if(isset( $value->field_tech)): ?>
-							<?php echo e($value->field_tech); ?> 
+							<?php echo e(ucfirst($value->field_tech)); ?> 
 						<?php endif; ?>
 						</td>
 						<td><?php if(isset( $value->event_id )): ?>
@@ -88,7 +88,7 @@
 
 						<?php endif; ?></td>
 						<td><?php if(isset($value->event_id )): ?>
-							<?php echo e($value->description); ?>
+							<?php echo e(ucfirst($value->description)); ?>
 
 						<?php endif; ?></td>
 						<td> </td>
@@ -103,10 +103,10 @@
 					<?php if($value->status == 1): ?>
 						<tr>
 						<td>#<?php echo e($value->id); ?></td>
-						<td><?php echo e($value->customer['contact_name']); ?></td>
-						<td><?php echo e($value->site['name']); ?></td>
+						<td><?php echo e(ucfirst($value->customer['contact_name'])); ?></td>
+						<td><?php echo e(ucfirst($value->site['name'])); ?></td>
 						<td><?php if(isset($technician[$value->id])): ?>
-							<?php echo e($technician[$value->id]->name); ?> 
+							<?php echo e(ucfirst($technician[$value->id]->name)); ?> 
 						<?php endif; ?>
 						<p><?php echo e(date('d/m/Y',strtotime($technician[$value->id]->date_start))); ?> <?php echo e(date("H:i", strtotime($technician[$value->id]->time_start))); ?> to <?php echo e(date("H:i", strtotime($technician[$value->id]->time_end))); ?></p>
 						</td>
@@ -118,12 +118,12 @@
 							if(isset($technician[$value->id]->lstart) && !empty($technician[$value->id]->lstart)){ ?> 
 							<?php echo e(date('d/m/y',strtotime($technician[$value->id]->lstart))); ?> <?php echo e(date("H:i", strtotime($technician[$value->id]->lstart_time))); ?>
 
-							<?php } ?>
+							<?php }else { echo "N/A";} ?>
 						</td>
 						<td><?php  if(isset($technician[$value->id]->rstart) && !empty($technician[$value->id]->rstart)){  ?>
 							<?php echo e(date('d/m/y',strtotime($technician[$value->id]->rstart))); ?> <?php echo e(date("H:i", strtotime($technician[$value->id]->rstart_time))); ?>
 
-							<?php } ?></td>
+							<?php }else { echo "N/A";}  ?></td>
 						<td><?php if(isset($technician[$value->id])): ?>
 							<?php echo e($technician[$value->id]->description); ?>
 

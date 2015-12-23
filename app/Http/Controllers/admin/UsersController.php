@@ -30,7 +30,11 @@ class UsersController extends Controller {
 		$id  = \Auth::user()->id;
 		
 		//$users = User::where('id', '<>', $id)->get();
-		$users = User::paginate(20);
+		//$users = User::paginate(20);
+		$users = User::orderBy('id', 'desc');
+  		$users->where('id', '<>', $id);
+  
+  		$users = $users->paginate(20);
 		return view('admin.users.index')->with('users',$users);	 
 	}
 	
@@ -42,7 +46,9 @@ class UsersController extends Controller {
 	function store(Request $request){
 		 
 		$input = $request->all();
-		$validator = Validator::make($input, User::$rules);
+			$rules = User::$rules;
+			$rules['username'] = array('regex:/^[a-z0-9_-]{3,15}$/');
+		$validator = Validator::make($input, $rules);
 		
 		if ($validator->fails()) {
 			return redirect()->back()->withInput($input)->withErrors($validator->errors());	
@@ -51,7 +57,7 @@ class UsersController extends Controller {
 		$user = new User;
 		$input['password'] = bcrypt($request->password);
 		//$input['role_id']  = ($input['type'] == 'client manager') ? 3 : 4;
-		if($input['type'] == 'client manager') {$role= 3; } else if($input['type'] == 'operation_manager') {$role=5;}else{$role=4;}
+		if($input['type'] == 'client manager') {$role= 3; } else if($input['type'] == 'operation_manager') {$role=5;}else if($input['type'] == 'laboratory') {$role=6;}else{$role=4;}
 		$input['role_id']  = $role;
 		$user::create($input); 
 		return redirect('admin/users'); 
@@ -84,10 +90,16 @@ class UsersController extends Controller {
 		
 		$input = $request->all();
 		$rules = User::$rules;
-		$rules['name'].= ",id,$id";
+		$rules['email'] .= ',email,'.$id.',id';
 		
+		//$rules['email'].= ',id,'.$id;
+		/*echo "<pre>";
+		print_r($rules);die;*/
 		if(empty($input['password']) && empty($input['password_confirmation'])){
 			unset($rules['password'],$rules['password_confirmation'],$input['password'],$input['password_confirmation']);
+		}
+		if(!empty($input['username'])){
+			unset($rules['username'],$rules['username'],$input['username'],$input['username']);
 		}
 		
 		$validator = Validator::make($input,$rules);
@@ -95,12 +107,14 @@ class UsersController extends Controller {
 		if ($validator->fails()) {
 			return redirect()->back()->withInput($input)->withErrors($validator->errors()); 	
 		}
-		 
+		if(!empty($input['password']) && !empty($input['password_confirmation'])){
+			$input['password'] = bcrypt($request->password);
+		}
 		$user =  User::find($id);
 		$user->update($input);
 		Session::flash('flash_message', 'User has been updated successfully.');
 		Session::flash('flash_type', 'alert-success');
 		return redirect('admin/users');
-	}
+}
 
 }

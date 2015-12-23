@@ -55,11 +55,19 @@ Route::get('technician/download_files', 'TechnicianController@download_files');
 Route::get('technician/job_detail/{id}', 'TechnicianController@job_detail');
 Route::post('technician/job_detail/{id}', 'TechnicianController@job_upload');
 Route::post('technician/job_submit/{id}', 'TechnicianController@job_submit');
-
+/**routes used for Laboratory*/
 Route::get('/lab/lab', 'LabController@index');
 Route::get('lab/lab_detail/{id}', 'LabController@lab_detail');
 Route::post('lab/lab_detail/{id}', 'LabController@lab_upload');
 Route::get('lab/download_files', 'LabController@download_files');
+Route::post('lab/job_submit/{id}', 'labController@job_submit');
+
+/**routes used for Reporting*/
+Route::get('/report/job', 'ReportController@index');
+Route::get('report/report_detail/{id}', 'ReportController@lab_detail');
+Route::post('report/report_detail/{id}', 'ReportController@lab_upload');
+Route::get('report/download_files', 'ReportController@download_files');
+Route::post('report/job_submit/{id}', 'ReportController@job_submit');
 
 Route::get('/work-schedule', function () {
 	include (public_path().'/work-schedule/index.php');

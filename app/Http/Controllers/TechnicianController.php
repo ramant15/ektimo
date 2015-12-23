@@ -49,7 +49,7 @@ class TechnicianController extends Controller {
 	public function jobs(){
 		$user  = \Auth::user();
 	
-		$jobs = DB::table('work_schedule.events')->join('work_schedule.calendars', 'work_schedule.events.calendar_id', '=', 'work_schedule.calendars.calendar_id')->where('work_schedule.calendars.name','=',$user['name'])->select('work_schedule.events.title',
+		$jobs = DB::table('work_schedule.events')->join('work_schedule.calendars', 'work_schedule.events.calendar_id', '=', 'work_schedule.calendars.calendar_id')->where('work_schedule.calendars.name','=',$user['name'])->where('work_schedule.events.status','=','open') ->select('work_schedule.events.title',
 		'work_schedule.events.description','work_schedule.events.order_id','work_schedule.events.create_date')->orderBy('create_date', 'desc')->get();
 		$jobModified = array();
 		foreach($jobs as $key => $value){
@@ -191,7 +191,7 @@ class TechnicianController extends Controller {
         $userId = $user->id; 
         DB::table('work_schedule.events')
             ->where('work_schedule.events.order_id', $id)
-            ->update(['status' => '1']);
+            ->update(['status' => 'lab']);
             return redirect('technician/jobs');
 	}
 	

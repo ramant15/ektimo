@@ -65,6 +65,7 @@
 							<option value="field technician" {{$user->type == 'field technician'?'selected':''}} >Technician</option>
 							<option value="operation_manager" {{$user->type == 'operation_manager'?'selected':''}} >Operation manager</option>
 							<option value="laboratory" {{$user->type == 'laboratory'?'selected':''}} >Laboratory manager</option>
+							<option value="reporting" {{$user->type == 'reporting'?'selected':''}}>Reporting manager</option>
 							</select>
 						</div>
 					</div>

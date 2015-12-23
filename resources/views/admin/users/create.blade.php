@@ -65,6 +65,7 @@
 							<option value="field technician">Technician</option>
 							<option value="operation_manager">Operation manager</option>
 							<option value="laboratory">Laboratory manager</option>
+							<option value="reporting">Reporting manager</option>
 							</select>
 						</div>
 					</div>

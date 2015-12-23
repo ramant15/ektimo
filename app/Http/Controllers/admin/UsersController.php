@@ -57,7 +57,7 @@ class UsersController extends Controller {
 		$user = new User;
 		$input['password'] = bcrypt($request->password);
 		//$input['role_id']  = ($input['type'] == 'client manager') ? 3 : 4;
-		if($input['type'] == 'client manager') {$role= 3; } else if($input['type'] == 'operation_manager') {$role=5;}else if($input['type'] == 'laboratory') {$role=6;}else{$role=4;}
+		if($input['type'] == 'client manager') {$role= 3; } else if($input['type'] == 'operation_manager') {$role=5;}else if($input['type'] == 'laboratory') {$role=6;}else if($input['type'] == 'reporting') {$role=7;}else{$role=4;}
 		$input['role_id']  = $role;
 		$user::create($input); 
 		return redirect('admin/users'); 

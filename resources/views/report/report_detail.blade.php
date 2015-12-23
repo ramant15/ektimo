@@ -4,9 +4,9 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading"><h4 class="field">Laboratory </h4></div>
+				<div class="panel-heading"><h4 class="field">Reporting </h4></div>
 				<div class="panel-body">
-				<form class="form-horizontal" role="form" method="post" action="{{URL::to('lab/lab_detail')}}/{{$job->order_id}}" enctype="multipart/form-data" id="testForm">
+				<form class="form-horizontal" role="form" method="post" action="{{URL::to('report/report_detail')}}/{{$job->order_id}}" enctype="multipart/form-data" id="testForm">
 					<input type="hidden" name="POST">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<div class="row">
@@ -60,7 +60,7 @@
 					@endif
 					</ul>
 					 <div class="form-group">
-					  <label for="sel1">laboratory Manager:</label>
+					  <label for="sel1">Reporting Manager:</label>
 					  <select class="form-control selectpicker" name="lab_technician">
 					 @foreach($items as $key => $value)
 					 
@@ -137,7 +137,7 @@
 					<dt>Job Description</dt>
 					<dd>{{$job->description}}</dd>
 					</form>
-					<form class="form-horizontal" role="form" method="post" action="{{URL::to('lab/job_submit')}}/{{$job->order_id}}" enctype="multipart/form-data" id="testForm">
+					<form class="form-horizontal" role="form" method="post" action="{{URL::to('report/job_submit')}}/{{$job->order_id}}" enctype="multipart/form-data" id="testForm">
 					<input type="hidden" name="POST">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<?php 

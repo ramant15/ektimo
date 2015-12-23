@@ -14,7 +14,7 @@ use Redirect;
 use File;
 use Excel;
 
-class LabController extends Controller {
+class ReportController extends Controller {
 
 	/**
 	 * Create a new controller instance.
@@ -35,9 +35,9 @@ class LabController extends Controller {
 	public function index(request $request)
 	{   
 	
-		$complete_events = DB::table('work_schedule.events')->where('work_schedule.events.status','=','lab')->select('work_schedule.events.*')->get(); 
+		$complete_events = DB::table('work_schedule.events')->where('work_schedule.events.status','=','report')->select('work_schedule.events.*')->get(); 
 		 
-		return view('lab/lab')->with(compact('complete_events'));
+		return view('report/job')->with(compact('complete_events'));
 		
 	}
 	
@@ -114,9 +114,9 @@ public function lab_detail($id){
 				//}
 			//}
 		}
-		 $items = DB::table('users')->select('id','name')->where('type','=','laboratory')->get();	
+		 $items = DB::table('users')->select('id','name')->where('type','=','reporting')->get();	
 		  
-		return view('lab/lab_detail')->with(compact('job','detail','documents','job_file','test_material','items'));
+		return view('report/report_detail')->with(compact('job','detail','documents','job_file','test_material','items'));
 			
 	}
 /**new function for file upload by technician**/
@@ -157,9 +157,7 @@ public function lab_detail($id){
 						Excel::load($path.'/'.$fileName, function($reader) {
 							// Getting all results
 							$results = $reader->toArray();
-								
 						});
-						
 					}
 					//Session::flash('flash_type', 'alert-success');	
 					//Session::flash('flash_message', 'File uploaded successfully.');
@@ -176,8 +174,8 @@ public function lab_detail($id){
 				}
 			}
 		}
-			$items = DB::table('users')->select('id','name')->where('type','=','laboratory')->get();	
-		return view('lab/lab_detail')->with(compact('job','detail','documents','job_file','test_material','items'));
+			$items = DB::table('users')->select('id','name')->where('type','=','reporting')->get();	
+		return view('report/report_detail')->with(compact('job','detail','documents','job_file','test_material','items'));
 			
 	}
 		 
@@ -186,8 +184,8 @@ public function lab_detail($id){
 	        $userId = $user->id; 
 	        DB::table('work_schedule.events')
 	            ->where('work_schedule.events.order_id', $id)
-	            ->update(['status' => 'report']);
-	            return redirect('lab/lab');
+	            ->update(['status' => 'done']);
+	            return redirect('report/job');
 		}
 		
 	public function download_files(){

@@ -48,7 +48,9 @@ class HomeController extends Controller {
 		} else if($user->role_id=="6"){
 			Redirect::to('lab/lab')->send();
 		}
-		
+		 else if($user->role_id=="7"){
+			Redirect::to('report/job')->send();
+		}
 		}
 	}
 	

@@ -3,9 +3,9 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading"><h4 class="field">Laboratory </h4></div>
+				<div class="panel-heading"><h4 class="field">Reporting </h4></div>
 				<div class="panel-body">
-				<form class="form-horizontal" role="form" method="post" action="<?php echo e(URL::to('lab/lab_detail')); ?>/<?php echo e($job->order_id); ?>" enctype="multipart/form-data" id="testForm">
+				<form class="form-horizontal" role="form" method="post" action="<?php echo e(URL::to('report/report_detail')); ?>/<?php echo e($job->order_id); ?>" enctype="multipart/form-data" id="testForm">
 					<input type="hidden" name="POST">
 					<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 					<div class="row">
@@ -60,7 +60,7 @@
 					<?php endif; ?>
 					</ul>
 					 <div class="form-group">
-					  <label for="sel1">laboratory Manager:</label>
+					  <label for="sel1">Reporting Manager:</label>
 					  <select class="form-control selectpicker" name="lab_technician">
 					 <?php foreach($items as $key => $value): ?>
 					 
@@ -139,7 +139,7 @@
 					<dt>Job Description</dt>
 					<dd><?php echo e($job->description); ?></dd>
 					</form>
-					<form class="form-horizontal" role="form" method="post" action="<?php echo e(URL::to('lab/job_submit')); ?>/<?php echo e($job->order_id); ?>" enctype="multipart/form-data" id="testForm">
+					<form class="form-horizontal" role="form" method="post" action="<?php echo e(URL::to('report/job_submit')); ?>/<?php echo e($job->order_id); ?>" enctype="multipart/form-data" id="testForm">
 					<input type="hidden" name="POST">
 					<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 					<?php 
